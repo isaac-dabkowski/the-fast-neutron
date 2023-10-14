@@ -170,13 +170,13 @@ class KgToMeV(Scene):
             Create(electron),
             Write(tex_e1)
         )
-        self.wait(3)
+        self.wait()
         self.play(
             Write(tex_p2),
             Write(tex_n2),
             Write(tex_e2)
         )
-        self.wait(2)
+        self.wait()
 
         # Show Einstein
         einstein_pic = ImageMobject("assets/Einstein.jpg").scale(0.25).shift(UP * 0.5)
@@ -186,11 +186,11 @@ class KgToMeV(Scene):
             buff=0.0
         )
         self.play(FadeIn(einstein_pic), FadeIn(einstein_border))
-        self.wait(3)
+        self.wait()
         # Show E=mc2
         tex_emc = Tex(r"$E=mc^{2}$").to_edge(DOWN)
         self.play(Write(tex_emc))
-        self.wait(3)
+        self.wait()
         # Remove einstein
         self.play(FadeOut(einstein_pic), FadeOut(einstein_border))
         self.wait()
@@ -210,13 +210,13 @@ class KgToMeV(Scene):
         line = Line(start=[tex_p2.get_right()[0] + 0.5, -10, 0], end=[tex_p2.get_right()[0] + 0.5, 10, 0])
         tex_emp1 = Tex(r"$E=m_{p}c^{2}$").shift(LEFT).align_to(tex_p1, DOWN)
         self.play(Transform(tex_emc, tex_emp1), FadeIn(line))
-        self.wait(2)
+        self.wait()
         tex_emp2 = Tex(r"$E=(1.673\text{e-}27\text{ kg})c^{2}$").shift(LEFT).next_to(tex_emp1, DOWN).align_to(tex_emp1, LEFT)
         self.play(Transform(tex_emp1.copy(), tex_emp2))
-        self.wait(2)
+        self.wait()
         tex_emp3 = Tex(r"$E=1.503\text{e-}10\text{ J}$").shift(LEFT).next_to(tex_emp2, DOWN).align_to(tex_emp1, LEFT)
         self.play(Transform(tex_emp2.copy(), tex_emp3))
-        self.wait(2)
+        self.wait()
         tex_j_to_mev = Tex(r"$1\text{ J}=6.242\text{e+}18\text{ eV}$").to_edge(DOWN).align_to(tex_emp1, LEFT)
         tex_j_to_mev_box = SurroundingRectangle(tex_j_to_mev, color=YELLOW, buff=SMALL_BUFF)
         self.play(Write(tex_j_to_mev), FadeIn(tex_j_to_mev_box))
@@ -244,7 +244,7 @@ class KgToMeV(Scene):
             color=BLUE
         )
         self.play(FadeIn(eV_animation_background), FadeIn(left_line), FadeIn(right_line), Write(left_line_label), Write(right_line_label))
-        self.wait(2)
+        self.wait()
         eV_label = VGroup(
             Tex(r"$KE_{e}$ = "),
             DecimalNumber(
@@ -257,19 +257,19 @@ class KgToMeV(Scene):
         ).arrange(RIGHT)
         eV_label.set_y(tex_p2.get_center()[2])
         eV_label.set_x((left_line.get_center()[0] + right_line.get_center()[0]) / 2)
-        self.wait(2)
+        self.wait()
         eV_label[1].add_updater(
             lambda m: m.set_value(
                 (e_dot.get_x() - left_line.get_x()) / (right_line.get_x() - left_line.get_x()))
         )
         self.play(Write(eV_label))
-        self.wait(2)
+        self.wait()
         self.play(
             e_dot.animate.shift([right_line.get_x() - left_line.get_x(), 0, 0]),
             rate_func=rate_functions.rush_into,
             run_time=4,
         )
-        self.wait(4)
+        self.wait()
         e_dot.set_x(left_line.get_x())
         self.play(
             e_dot.animate.shift(
@@ -277,7 +277,7 @@ class KgToMeV(Scene):
             rate_func=rate_functions.rush_into,
             run_time=4,
         )
-        self.wait(3)
+        self.wait()
 
         # Clear eV animation
         self.play(
@@ -289,16 +289,16 @@ class KgToMeV(Scene):
             FadeOut(eV_label),
             FadeOut(e_dot)
         )
-        self.wait(2)
+        self.wait()
         tex_emp4 = Tex(r"$E=9.383\text{e+}8\text{ eV}$").shift(LEFT).next_to(tex_emp3, DOWN).align_to(tex_emp1, LEFT)
         self.play(Transform(tex_emp3.copy(), tex_emp4))
-        self.wait(3)
+        self.wait()
         tex_emp5 = Tex(r"$E=938.3\text{ MeV}$").shift(LEFT).next_to(tex_emp4, DOWN).align_to(tex_emp1, LEFT)
         self.play(Transform(tex_emp4.copy(), tex_emp5))
-        self.wait(3)
+        self.wait()
         tex_p2 = Tex(r"$m_{p}=\frac{938.3\text{ MeV}}{c^{2}}$").shift(LEFT).next_to(tex_emp5, DOWN).align_to(tex_emp1, LEFT)
         self.play(Transform(tex_emp5.copy(), tex_p2))
-        self.wait(5)
+        self.wait()
 
         # Shift results onto proton
         tex_emp_final = Tex(r"$938.3\text{ MeV}$").next_to(proton, DOWN)
@@ -329,3 +329,223 @@ class KgToMeV(Scene):
             FadeIn(tex_e2)
         )
 
+
+class AtomicStructure(Scene):
+    def construct(self):
+        # Helper function to make protons
+        def proton():
+            proton = Circle(
+                radius=0.35,
+                color=RED,
+            ).set_fill(RED, opacity=0.5)
+            return proton
+
+        # Helper function to make neutrons
+        def neutron():
+            neutron = Circle(
+                radius=0.35,
+                color=GREEN,
+            ).set_fill(GREEN, opacity=0.5)
+            return neutron
+
+        # Helper function to make electrons
+        def electron():
+            electron = Circle(
+                radius=0.12,
+                color=BLUE,
+            ).set_fill(BLUE, opacity=0.5)
+            return electron
+
+        # Helper function to make electron cloud
+        def electron_cloud(inner_radius, outer_radius):
+            electron_cloud = VGroup()
+            electron_cloud_linspace = np.linspace(inner_radius, outer_radius, 100)
+            for i in range(0, len(electron_cloud_linspace)-1):
+                electron_cloud.add(
+                    Annulus(
+                        inner_radius=electron_cloud_linspace[i],
+                        outer_radius=electron_cloud_linspace[i + 1],
+                        stroke_width=0.0,
+                        fill_opacity=0.5,
+                        color=WHITE
+                    )
+                )
+            electron_cloud.set_color_by_gradient(BLACK, BLUE, BLACK)
+            return electron_cloud
+
+        # Build a nucleus
+        he3_p1 = proton()
+        he3_p2 = proton()
+        he3_n = neutron()
+        he3_e1 = electron()
+        he3_e2 = electron()
+        he3_comps = VGroup(
+            he3_p1,
+            he3_p2,
+            he3_n,
+            he3_e1,
+            he3_e2
+        ).arrange(RIGHT, buff=LARGE_BUFF).shift(UP * 2)
+        self.play(Create(he3_comps))
+        self.wait()
+        animations = [
+            he3_p2.animate.move_to([he3_p2.radius, np.sqrt(3)/2*he3_p2.radius, 0]),
+            Wait(),
+            he3_p1.animate.move_to([-he3_p1.radius, np.sqrt(3)/2*he3_p1.radius, 0]),
+            Wait(),
+            he3_n.animate.move_to([0, -np.sqrt(3)/2*he3_n.radius, 0]),
+        ]
+        self.play(AnimationGroup(*animations, lag_ratio=0.5, run_time=5))
+        nucleus_label = Tex(r"\underline{Nucleus}").next_to(he3_n, DOWN)
+        self.play(Write(nucleus_label))
+        self.wait()
+        self.play(FadeOut(nucleus_label))
+        self.wait()
+
+        # Show electrons orbiting
+        orbit_1 = Ellipse(width=4.0, height=2.0, color=BLUE_B, stroke_width=1.5).rotate(np.pi/4)
+        orbit_2 = Ellipse(width=4.0, height=2.0, color=BLUE_B, stroke_width=1.5).rotate(3*np.pi/4)
+        he3_e1_new = electron().move_to([0.5 * orbit_1.height * np.sin(np.pi / 3), 0.5 * orbit_1.height * np.cos(np.pi / 6), 0])
+        he3_e2_new = electron().move_to([-0.5 * orbit_2.height * np.sin(np.pi / 3), 0.5 * orbit_2.height * np.cos(np.pi / 6), 0])
+        self.play(
+            DrawBorderThenFill(orbit_1),
+            DrawBorderThenFill(orbit_2),
+            Transform(he3_e1, he3_e1_new),
+            Transform(he3_e2, he3_e2_new)
+        )
+        self.wait()
+        self.play(
+            MoveAlongPath(he3_e1, orbit_1),
+            MoveAlongPath(he3_e2, orbit_2),
+            run_time=5,
+            rate_func=rate_functions.ease_in_out_quart
+        )
+        self.wait()
+
+        # Show electron cloud
+        self.play(
+            FadeOut(he3_e1),
+            FadeOut(he3_e2),
+            FadeOut(orbit_1),
+            FadeOut(orbit_2)
+        )
+        self.wait()
+        he3_electron_cloud = electron_cloud(inner_radius=0.85, outer_radius=2.5)
+        self.play(FadeIn(he3_electron_cloud))
+        self.wait()
+
+        # Move to he3 to the left
+        he3_nucleus = VGroup(he3_p1, he3_p2, he3_n)
+        he3 = VGroup(he3_nucleus, he3_electron_cloud)
+        self.play(Transform(he3, he3.copy().scale(0.8).to_edge(LEFT).shift(DOWN)))
+        self.wait()
+
+        # Describe isotope notation
+        he3_label = Tex(r"$^A_ZX$")
+        self.play(Write(he3_label))
+        self.wait()
+        X_arrow = Arrow(start=[he3_label.get_right()[0] + 1.65, he3_label.get_center()[1], 0], end=[he3_label.get_right()[0], he3_label.get_center()[1], 0], stroke_width=1)
+        X_label = Tex(r"Chemical symbol", font_size=40).next_to(X_arrow, RIGHT)
+        self.play(
+            GrowArrow(X_arrow),
+            Write(X_label)
+        )
+        self.wait()
+        self.play(Transform(he3_label, Tex(r"$^A_Z\text{He}$")))
+        self.wait()
+        Z_arrow = Arrow(start=[he3_label.get_left()[0] + 0.15, he3_label.get_bottom()[1] - 1.5, 0], end=[he3_label.get_left()[0] + 0.15, he3_label.get_bottom()[1], 0], stroke_width=1)
+        Z_label = Tex(r"\# of protons", font_size=40).next_to(Z_arrow, DOWN)
+        self.play(
+            GrowArrow(Z_arrow),
+            Write(Z_label)
+        )
+        self.wait()
+        self.play(Transform(he3_label, Tex(r"$^A_2\text{He}$")))
+        self.wait()
+        A_arrow = Arrow(start=[he3_label.get_left()[0] + 0.15, he3_label.get_top()[1] + 1.5, 0], end=[he3_label.get_left()[0] + 0.15, he3_label.get_top()[1], 0], stroke_width=1)
+        A_label = Tex(r"\# of nucleons (neutrons + protons)", font_size=40).next_to(A_arrow, UP)
+        self.play(
+            GrowArrow(A_arrow),
+            Write(A_label)
+        )
+        self.wait()
+        self.play(Transform(he3_label, Tex(r"$^3_2\text{He}$")))
+        self.wait()
+        self.play(
+            Transform(he3_label, Tex(r"$^3_2\text{He}$").next_to(he3, UP)),
+            FadeOut(X_arrow),
+            FadeOut(X_label),
+            FadeOut(Z_arrow),
+            FadeOut(Z_label),
+            FadeOut(A_arrow),
+            FadeOut(A_label)
+        )
+        he3_name = Tex(r"\underline{Helium-3}").next_to(he3_label, UP)
+        self.play(Write(he3_name))
+        self.wait()
+
+        # Talk about elements and isotopes
+        isotope_description = Tex(
+            r"\begin{tabular}{@{}l@{}c@{\hspace{0.5em}}l@{}}"
+            r"Isotopes & : & Distinct types of the \\"
+            r"& & same element, distinguished \\"
+            r"& & by their mass number."
+            r"\end{tabular}",
+            font_size=40
+        ).align_to(he3_name, UP).shift(RIGHT * 2)
+        isotope_description_box = SurroundingRectangle(isotope_description, color=YELLOW, buff=SMALL_BUFF)
+        same_p = Tex("Same number of protons", font_size=40).next_to(isotope_description, DOWN * 2)
+        diff_n = Tex("different number of neutrons!", font_size=40).next_to(same_p, DOWN)
+        self.play(
+            DrawBorderThenFill(isotope_description_box),
+            Write(isotope_description)
+        )
+        self.wait()
+        self.play(
+            Write(same_p),
+            Write(diff_n)
+        )
+        self.wait()
+        self.play(
+            FadeOut(isotope_description_box),
+            FadeOut(isotope_description),
+            FadeOut(same_p),
+            FadeOut(diff_n)
+        )
+        self.wait()
+
+        # Helium 4 example
+        he4_p1 = proton().move_to([-he3_p1.radius, he3_p1.radius, 0])
+        he4_p2 = proton().move_to([he3_p1.radius, -he3_p1.radius, 0])
+        he4_n1 = neutron().move_to([he3_p1.radius, he3_p1.radius, 0])
+        he4_n2 = neutron().move_to([-he3_p1.radius, -he3_p1.radius, 0])
+        he4_nucleus = VGroup(he4_p1, he4_p2, he4_n1, he4_n2).rotate(np.pi/4)
+        he4_electron_cloud = electron_cloud(inner_radius=0.85, outer_radius=2.5)
+        he4 = VGroup(he4_nucleus, he4_electron_cloud).scale(0.8).set_y(he3.get_center()[1])
+        he4_label = Tex(r"$^4_2\text{He}$").next_to(he4, UP)
+        he4_name = Tex(r"\underline{Helium-4}").next_to(he4_label, UP)
+        self.play(
+            FadeIn(he4),
+            FadeIn(he4_label),
+            FadeIn(he4_name),
+        )
+        self.wait()
+
+        # Lithium 7 example
+        li7_p1 = proton().move_to([-2 * he3_p1.radius, 0, 0])
+        li7_p2 = proton()
+        li7_p3 = proton().move_to([2 * he3_p1.radius, 0, 0])
+        li7_n1 = neutron().move_to([-he3_p1.radius, np.sqrt(3)*he3_p1.radius, 0])
+        li7_n2 = neutron().move_to([he3_p1.radius, np.sqrt(3)*he3_p1.radius, 0])
+        li7_n3 = neutron().move_to([-he3_p1.radius, -np.sqrt(3)*he3_p1.radius, 0])
+        li7_n4 = neutron().move_to([he3_p1.radius, -np.sqrt(3)*he3_p1.radius, 0])
+        li7_nucleus = VGroup(li7_p1, li7_p2, li7_p3, li7_n1, li7_n2, li7_n3, li7_n4)
+        li7_electron_cloud = electron_cloud(inner_radius=1.2, outer_radius=3.0)
+        li7 = VGroup(li7_nucleus, li7_electron_cloud).scale(0.75).to_edge(RIGHT).set_y(he3.get_center()[1])
+        li7_label = Tex(r"$^7_3\text{Li}$").next_to(li7, UP)
+        li7_name = Tex(r"\underline{Lithium-7}").next_to(li7_label, UP)
+        self.play(
+            FadeIn(li7),
+            FadeIn(li7_label),
+            FadeIn(li7_name),
+        )
