@@ -1,14 +1,13 @@
 from manim import *
 
-CHANNEL_TITLE = Tex("The ", "Fast ", "Neutron").to_edge(UP)
+CHANNEL_TITLE = Tex("The Fast Neutron").to_edge(UP)
 CHANNEL_DESCRIPTION = Tex("A channel all about nuclear science and engineering").next_to(CHANNEL_TITLE, DOWN * 2)
 VIDEO_TITLE = Tex("1: The Basics").to_edge(DOWN)
 
 TABLE_OF_CONTENTS = [
-    "Atoms",
+    "Introduction to atoms",
     "Strong nuclear force",
-    "Nuclear binding energy",
-    "Fission and Fusion"
+    "Nuclear binding energy and the semi-empirical mass formula"
 ]
 
 class TitleCard(Scene):
@@ -17,17 +16,16 @@ class TitleCard(Scene):
         neutron_sprite = ImageMobject("assets/NeutronSprite.png")
         # Text
         animations = [
+            Wait(),
             FadeIn(neutron_sprite),
             Wait(),
-            FadeIn(CHANNEL_TITLE[0], shift=DOWN),
-            FadeIn(CHANNEL_TITLE[1], shift=DOWN),
-            FadeIn(CHANNEL_TITLE[2], shift=DOWN),
-            Wait(2),
-            FadeIn(CHANNEL_DESCRIPTION, shift=UP),
-            Wait(3),
-            FadeIn(VIDEO_TITLE, shift=UP)
+            Write(CHANNEL_TITLE, shift=DOWN),
+            Wait(),
+            Write(CHANNEL_DESCRIPTION, shift=UP),
+            Wait(),
+            Write(VIDEO_TITLE, shift=UP)
         ]
-        self.play(AnimationGroup(*animations, lag_ratio=0.5))
+        self.play(AnimationGroup(*animations, lag_ratio=1.0))
 
 class TableOfContents(Scene):
     def construct(self):
@@ -49,5 +47,5 @@ class TableOfContents(Scene):
                 Wait()
             ]
         # Execute
-        self.play(AnimationGroup(*animations, lag_ratio=0.5))
+        self.play(AnimationGroup(*animations, lag_ratio=1.0))
 

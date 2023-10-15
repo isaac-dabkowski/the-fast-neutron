@@ -1,0 +1,12 @@
+
+
+------------
+Strong Force
+------------
+- Strong force is really between quarks, mediated by gluons
+- Strong nuclear force is "residual" from the strong interaction, which is between quarks and acts on color charge
+- Analagous to London Dispersion Forces, where momentary imbalances in electric charge within atoms and molecules allow them to be attracted to one another, but weakly and only at very close distances
+    - London dispersion forces (residual strong force) is much weaker than the electrostatic interactions (strong interaction) that gold molecules together
+- Even though neutrons and protons are color neutral, quarks and gluons may quickly leak out and provide an attractive force between nucleons. This is mediated by virtual pions.
+    - see this gif https://en.wikipedia.org/wiki/Nuclear_force#/media/File:Nuclear_Force_anim_smaller.gif
+

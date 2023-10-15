@@ -1,6 +1,16 @@
 from manim import *
 
 
+class AtomsTitleCard(Scene):
+    def construct(self):
+        section_title = Tex("Introduction to atoms")
+        self.wait()
+        self.play(Write(section_title))
+        self.wait()
+        self.play(*[FadeOut(mob) for mob in self.mobjects])
+        self.wait()
+
+
 class Proton(Scene):
     def construct(self):
         # Create proton
@@ -9,7 +19,7 @@ class Proton(Scene):
             color=RED,
         )
         proton.set_fill(RED, opacity=0.5)
-        self.play(Create(proton))
+        self.play(GrowFromCenter(proton))
         self.play(Wait())
 
         # Move proton to right and display some info
@@ -24,24 +34,40 @@ class Proton(Scene):
             Wait(),
             Write(tex3)
         ]
-        self.play(AnimationGroup(*animations, lag_ratio=0.5))
+        self.play(AnimationGroup(*animations, lag_ratio=1.0))
+        self.wait()
+        self.play(*[FadeOut(mob) for mob in self.mobjects])
+        self.wait()
 
 
-class ProtonDELETE(Scene):
+class Electron(Scene):
     def construct(self):
-        # Reconstruct scene
-        proton = Circle(
-            radius=1.0,
-            color=RED,
-        ).move_to(RIGHT * 3)
-        proton.set_fill(RED, opacity=0.5)
+        # Create electron
+        electron = Circle(
+            radius=0.35,
+            color=BLUE,
+        )
+        electron.set_fill(BLUE, opacity=0.5)
+        self.play(GrowFromCenter(electron))
+        self.play(Wait())
 
-        tex1 = Tex(r"\underline{Proton}").to_corner(LEFT + UP)
+        # Move electron to right and display some info
+        self.play(electron.animate.move_to(RIGHT * 3))
+        tex1 = Tex(r"\underline{Electron}").to_corner(LEFT + UP)
         tex2 = Tex(
-            r"Mass: $1.673\times10^{-27}$ kg").next_to(tex1, DOWN).align_to(tex1, LEFT)
-        tex3 = Tex(r"Charge: +1 e").next_to(tex2, DOWN).align_to(tex1, LEFT)
-        self.add(proton, tex1, tex2, tex3)
-        self.play(FadeOut(VGroup(*self.mobjects)))
+            r"Mass: $9.109\times10^{-31}$ kg").next_to(tex1, DOWN).align_to(tex1, LEFT)
+        tex3 = Tex(r"Charge: -1 e").next_to(tex2, DOWN).align_to(tex1, LEFT)
+        animations = [
+            Write(tex1),
+            Wait(),
+            Write(tex2),
+            Wait(),
+            Write(tex3)
+        ]
+        self.play(AnimationGroup(*animations, lag_ratio=1.0))
+        self.wait()
+        self.play(*[FadeOut(mob) for mob in self.mobjects])
+        self.wait()
 
 
 class Neutron(Scene):
@@ -52,7 +78,7 @@ class Neutron(Scene):
             color=GREEN,
         )
         neutron.set_fill(GREEN, opacity=0.5)
-        self.play(Create(neutron))
+        self.play(GrowFromCenter(neutron))
         self.play(Wait())
 
         # Move neutron to right and display some info
@@ -67,65 +93,10 @@ class Neutron(Scene):
             Wait(),
             Write(tex3)
         ]
-        self.play(AnimationGroup(*animations, lag_ratio=0.5))
-
-
-class NeutronDELETE(Scene):
-    def construct(self):
-        # Create neutron
-        neutron = Circle(
-            radius=1.0,
-            color=GREEN,
-        ).move_to(RIGHT * 3)
-        neutron.set_fill(GREEN, opacity=0.5)
-        tex1 = Tex(r"\underline{Neutron}").to_corner(LEFT + UP)
-        tex2 = Tex(
-            r"Mass: $1.675\times10^{-27}$ kg").next_to(tex1, DOWN).align_to(tex1, LEFT)
-        tex3 = Tex(r"Charge: 0 e").next_to(tex2, DOWN).align_to(tex1, LEFT)
-        self.add(neutron, tex1, tex2, tex3)
-        self.play(FadeOut(VGroup(*self.mobjects)))
-
-
-class Electron(Scene):
-    def construct(self):
-        # Create electron
-        electron = Circle(
-            radius=0.35,
-            color=BLUE,
-        )
-        electron.set_fill(BLUE, opacity=0.5)
-        self.play(Create(electron))
-        self.play(Wait())
-
-        # Move electron to right and display some info
-        self.play(electron.animate.move_to(RIGHT * 3))
-        tex1 = Tex(r"\underline{Electron}").to_corner(LEFT + UP)
-        tex2 = Tex(r"Mass: $9.109\times10^{-31}$ kg").next_to(tex1, DOWN).align_to(tex1, LEFT)
-        tex3 = Tex(r"Charge: -1 e").next_to(tex2, DOWN).align_to(tex1, LEFT)
-        animations = [
-            Write(tex1),
-            Wait(),
-            Write(tex2),
-            Wait(),
-            Write(tex3)
-        ]
-        self.play(AnimationGroup(*animations, lag_ratio=0.5))
-
-
-class ElectronDELETE(Scene):
-    def construct(self):
-        # Reconstuct scene
-        electron = Circle(
-            radius=1.0,
-            color=BLUE,
-        ).move_to(RIGHT * 3)
-        electron.set_fill(BLUE, opacity=0.5)
-        tex1 = Tex(r"\underline{Electron}").to_corner(LEFT + UP)
-        tex2 = Tex(
-            r"Mass: $9.109\times10^{-31}$ kg").next_to(tex1, DOWN).align_to(tex1, LEFT)
-        tex3 = Tex(r"Charge: -1 e").next_to(tex2, DOWN).align_to(tex1, LEFT)
-        self.add(electron, tex1, tex2, tex3)
-        self.play(FadeOut(VGroup(*self.mobjects)))
+        self.play(AnimationGroup(*animations, lag_ratio=1.0))
+        self.wait()
+        self.play(*[FadeOut(mob) for mob in self.mobjects])
+        self.wait()
 
 
 class KgToMeV(Scene):
@@ -141,6 +112,7 @@ class KgToMeV(Scene):
         proton.shift(RIGHT)
         tex_p1 = Tex(r"\underline{Proton}").next_to(proton, UP)
         tex_p2 = Tex(r"$1.673\text{e-}27$ kg").next_to(proton, DOWN)
+
         # Make neutron and associated text
         neutron = Circle(
             radius=1.0,
@@ -150,6 +122,7 @@ class KgToMeV(Scene):
         neutron.shift(UP)
         tex_n1 = Tex(r"\underline{Neutron}").next_to(neutron, UP)
         tex_n2 = Tex(r"$1.675\text{e-}27$ kg").next_to(neutron, DOWN)
+
         # Make electron and associated text
         electron = Circle(
             radius=0.35,
@@ -161,13 +134,14 @@ class KgToMeV(Scene):
         electron.shift(LEFT)
         tex_e1 = Tex(r"\underline{Electron}").next_to(electron, UP).align_to(tex_p1, DOWN)
         tex_e2 = Tex(r"$9.109\text{e-}31$ kg").next_to(electron, DOWN).align_to(tex_p2, DOWN)
+
         # Populate screen
         self.play(
-            Create(proton),
+            GrowFromCenter(proton),
             Write(tex_p1),
-            Create(neutron),
+            GrowFromCenter(neutron),
             Write(tex_n1),
-            Create(electron),
+            GrowFromCenter(electron),
             Write(tex_e1)
         )
         self.wait()
@@ -187,10 +161,12 @@ class KgToMeV(Scene):
         )
         self.play(FadeIn(einstein_pic), FadeIn(einstein_border))
         self.wait()
+
         # Show E=mc2
         tex_emc = Tex(r"$E=mc^{2}$").to_edge(DOWN)
         self.play(Write(tex_emc))
         self.wait()
+
         # Remove einstein
         self.play(FadeOut(einstein_pic), FadeOut(einstein_border))
         self.wait()
@@ -328,6 +304,11 @@ class KgToMeV(Scene):
             FadeIn(tex_e1),
             FadeIn(tex_e2)
         )
+        self.wait()
+
+        # Clear screen
+        self.play(*[FadeOut(mob) for mob in self.mobjects])
+        self.wait()
 
 
 class AtomicStructure(Scene):
@@ -337,7 +318,7 @@ class AtomicStructure(Scene):
             proton = Circle(
                 radius=0.35,
                 color=RED,
-            ).set_fill(RED, opacity=0.5)
+            ).set_fill("#7d3129", opacity=1.0)
             return proton
 
         # Helper function to make neutrons
@@ -345,7 +326,7 @@ class AtomicStructure(Scene):
             neutron = Circle(
                 radius=0.35,
                 color=GREEN,
-            ).set_fill(GREEN, opacity=0.5)
+            ).set_fill("#416033", opacity=1.0)
             return neutron
 
         # Helper function to make electrons
@@ -353,7 +334,7 @@ class AtomicStructure(Scene):
             electron = Circle(
                 radius=0.12,
                 color=BLUE,
-            ).set_fill(BLUE, opacity=0.5)
+            ).set_fill("#2c626e", opacity=1.0)
             return electron
 
         # Helper function to make electron cloud
@@ -549,3 +530,8 @@ class AtomicStructure(Scene):
             FadeIn(li7_label),
             FadeIn(li7_name),
         )
+        self.wait()
+
+        # Clear screen
+        self.play(*[FadeOut(mob) for mob in self.mobjects])
+        self.wait()
