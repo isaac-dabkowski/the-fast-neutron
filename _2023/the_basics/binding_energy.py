@@ -1,63 +1,58 @@
 from manim import *
 
+
+def calc_BE_A(Z, N):
+    """
+    Calculate binding energy per nucleon for a given
+    number of protons and neutrons with the SEMF
+    """
+    # Mass of proton and neutron in amu
+    m_p = 1.007276
+    m_n = 1.008665
+    # MeV per amu
+    c_2 = 931.494
+    # SEMF coefficients
+    a_V = 15.835
+    a_S = 18.33
+    a_C = 0.714
+    a_A = 23.2
+    a_P = 11.2
+    # Atomic number
+    A = Z + N
+    # Initialize bindign energy
+    BE = 0
+    # Volume term
+    vol = a_V * A
+    BE += vol
+    # Surface term
+    surf = a_S * A ** (2 / 3)
+    BE -= surf
+    # Coulomb term
+    col = a_C * (Z * (Z - 1)) / A ** (1 / 3)
+    BE -= col
+    # Asymmetry term
+    asym = a_A * (A - 2 * Z) ** 2 / A
+    BE -= asym
+    # Pairing term
+    if Z % 2 == 0 and N % 2 == 0:
+        delta = 1
+    elif Z % 2 == 1 and N % 2 == 1:
+        delta = -1
+    else:
+        delta = 0
+    pair = delta * a_P / A ** (1 / 2)
+    BE += pair
+    return BE / A
+
+
 def create_BE_data():
     """
     Generates BE/A data for many different nuclides.
     """
-    def calc_BE_A(Z, N):
-        """
-        Calculate binding energy per nucleon for a given
-        number of protons and neutrons with the SEMF
-        """
-        # Mass of proton and neutron in amu
-        m_p = 1.007276
-        m_n = 1.008665
-        # MeV per amu
-        c_2 = 931.494
-        # SEMF coefficients
-        a_V = 15.835
-        a_S = 18.33
-        a_C = 0.714
-        a_A = 23.2
-        a_P = 11.2
-
-        # Atomic number
-        A = Z + N
-        # Initialize bindign energy
-        BE = 0
-
-        # Volume term
-        vol = a_V * A
-        BE += vol
-
-        # Surface term
-        surf = a_S * A ** (2 / 3)
-        BE -= surf
-
-        # Coulomb term
-        col = a_C * (Z * (Z - 1)) / A ** (1 / 3)
-        BE -= col
-
-        # Asymmetry term
-        asym = a_A * (A - 2 * Z) ** 2 / A
-        BE -= asym
-
-        # Pairing term
-        if Z % 2 == 0 and N % 2 == 0:
-            delta = 1
-        elif Z % 2 == 1 and N % 2 == 1:
-            delta = -1
-        else:
-            delta = 0
-        pair = delta * a_P / A ** (1 / 2)
-        BE += pair
-
-        return BE / A
     BE_A = dict()
     A_max = 250
     # Loop over all mass numbers
-    for A in range(1, A_max + 1):
-        BE_A[A] = list()
+    for A in range(2, A_max + 1):
         # Loop over all possible combinations of
         # neutrons and protons for the given mass number
         for Z in range(1, A + 1):
@@ -65,6 +60,8 @@ def create_BE_data():
             be_per_a = calc_BE_A(Z=Z, N=N)
             # Cutoff to not include insane results
             if be_per_a > (4/A_max)*A + 1.8:
+                if A not in BE_A:
+                    BE_A[A] = list()
                 BE_A[A].append((Z, be_per_a))
     return BE_A
 
@@ -513,14 +510,244 @@ class SEMFPlots(Scene):
 
 class PlotAllIsotopes(ThreeDScene):
         def construct(self):
-            # Plot all binding energy data
+            phi, theta, focal_distance, gamma, distance_to_origin = self.camera.get_value_trackers()
+            data = create_BE_data()
+            # Make axes
             ax = ThreeDAxes(
                 x_range=[0, 250, 50],
                 y_range=[0, 150, 25],
-                z_range=[2, 10, 1],
+                z_range=[0, 10, 2],
+                x_length=5,
+                y_length=6,
+                z_length=4,
                 tips=False,
-                y_axis_config={"include_numbers": True, "font_size": 30},
                 x_axis_config={"include_numbers": True,  "font_size": 30},
+                y_axis_config={"include_numbers": True, "font_size": 30, "numbers_to_exclude": [150]},
+                z_axis_config={"include_numbers": True,  "font_size": 30}
             )
-            self.set_camera_orientation(phi=75 * DEGREES, theta=30 * DEGREES)
-            self.add(ax)
+            # Fix x label orientations
+            for label in ax.x_axis.numbers:
+                self.camera.add_fixed_orientation_mobjects(label)
+            # Add x axis label
+            ax_x_label = ax.get_x_axis_label(Tex("Mass number", font_size = 40)).next_to(ax.coords_to_point(sum(ax.x_range[0:2]) / 2, ax.y_range[0]), DOWN * 7.0)
+            self.camera.add_fixed_orientation_mobjects(ax_x_label)
+            # Fix y label orientations
+            for label in ax.y_axis.numbers:
+                self.camera.add_fixed_orientation_mobjects(label)
+            # Add y axis label
+            ax_y_label = ax.get_x_axis_label(Tex("Atomic number", font_size=40)).next_to(ax.coords_to_point(ax.x_range[0], sum(ax.y_range[0:2]) / 2), LEFT * 2.5)
+            self.camera.add_fixed_orientation_mobjects(ax_y_label)
+            # Fix z labels
+            for label in ax.z_axis.numbers:
+                label.rotate(PI, ax.z_axis.get_unit_vector()).rotate(PI/2, ax.y_axis.get_unit_vector())
+                self.camera.add_fixed_orientation_mobjects(label)
+            # Add z axis label
+            ax_z_label = Tex(r"$\frac{\text{BE}}{A}$ (MeV)", font_size=40).next_to(ax.coords_to_point(ax.x_range[0], ax.y_range[1], sum(ax.z_range[0:2]) / 2), LEFT * 4.0)
+            self.camera.add_fixed_orientation_mobjects(ax_z_label)
+            # Make the z axis transparent, and then use a dummy axis which is shifted in the y direction
+            dummmy_ax = ax.z_axis.copy().shift(UP * ax.y_length)
+            ax.z_axis.set_opacity(0.0)
+            # Show the X/Y plane
+            xy_plane = NumberPlane(
+                x_range=[0, ax.x_range[1] / ax.x_range[2] + 1.0],
+                y_range=[0, (ax.y_range[1] / ax.y_range[2]) - 1.0],
+                background_line_style={
+                    "stroke_color": GREY,
+                    "stroke_width": 1,
+                    "stroke_opacity": 0.5,
+                },
+            ).rotate(PI, axis=ax.y_axis.get_unit_vector()).rotate(PI/2, axis=ax.z_axis.get_unit_vector())
+            xy_plane.x_axis.set_opacity(0.0)
+            xy_plane.y_axis.set_opacity(0.0)
+            xy_plane.move_to(ax.coords_to_point(ax.x_range[1]/2, ax.y_range[1]/2, 0))
+            axes = VGroup(
+                ax,
+                dummmy_ax,
+                xy_plane,
+                ax_x_label,
+                ax_y_label,
+                ax_z_label
+            )
+            # Reposition camera
+            self.set_camera_orientation(
+                phi=65 * DEGREES,
+                theta=215 * DEGREES,
+                frame_center=[0, 0, 1.2],
+                focal_distance=1e6
+            )
+            self.play(
+                Create(ax),
+                Create(dummmy_ax),
+                Create(xy_plane)
+            )
+            self.wait()
+            self.play(Create(ax_x_label))
+            self.wait()
+            self.play(Create(ax_y_label))
+            self.wait()
+            self.play(Create(ax_z_label))
+            self.wait()
+
+            # Plot all isotopes
+            iso_plots = VGroup()
+            other_iso_plots = VGroup()
+            for A in data:
+                x = [A] * len(data[A])
+                y = [d[0] for d in data[A]]
+                z = [d[1] for d in data[A]]
+                graph = ax.plot_line_graph(
+                    x_values=x,
+                    y_values=y,
+                    z_values=z,
+                    add_vertex_dots=False,
+                    stroke_width=0.65,
+                )
+                if A % 10 == 0:
+                    iso_plots.add(graph)
+                else:
+                    other_iso_plots.add(graph)
+            iso_plots.set_color_by_gradient(PINK, BLUE, YELLOW)
+            other_iso_plots.set_color_by_gradient(PINK, BLUE, YELLOW)
+            self.play(Create(iso_plots))
+            self.wait()
+            self.begin_ambient_camera_rotation(rate=0.06, about='theta')
+            self.wait()
+
+            # Highlight iron
+            fe_x = [56] * len(data[56])
+            fe_y = [d[0] for d in data[56]]
+            fe_z = [d[1] for d in data[56]]
+            fe_graph = ax.plot_line_graph(
+                x_values=fe_x,
+                y_values=fe_y,
+                z_values=fe_z,
+                add_vertex_dots=False,
+                stroke_width=2,
+                stroke_color=WHITE
+            )
+            fe_dot = Sphere(radius=0.08, resolution=18).set_color(RED)
+            fe_dot.move_to(ax.coords_to_point(fe_x[0], fe_y[fe_z.index(max(fe_z))], max(fe_z)))
+            self.play(FadeIn(fe_graph))
+            self.wait()
+            self.play(GrowFromCenter(fe_dot))
+            self.wait()
+            self.play(
+                FadeOut(fe_graph),
+                FadeOut(fe_dot)
+            )
+            self.wait()
+
+            # Highlight uranium
+            u_x = [238] * len(data[238])
+            u_y = [d[0] for d in data[238]]
+            u_z = [d[1] for d in data[238]]
+            u_graph = ax.plot_line_graph(
+                x_values=u_x,
+                y_values=u_y,
+                z_values=u_z,
+                add_vertex_dots=False,
+                stroke_width=2,
+                stroke_color=WHITE
+            )
+            u_dot = Sphere(radius=0.08, resolution=18).set_color(RED)
+            u_dot.move_to(ax.coords_to_point(
+                u_x[0], u_y[u_z.index(max(u_z))], max(u_z)))
+            self.play(FadeIn(u_graph))
+            self.wait()
+            self.play(GrowFromCenter(u_dot))
+            self.wait()
+            self.play(
+                FadeOut(u_graph),
+                FadeOut(u_dot)
+            )
+            self.wait()
+
+            # Draw line of max BE / A
+            max_x = [*data]
+            max_y = list()
+            max_z = list()
+            for A in data:
+                y = [d[0] for d in data[A]]
+                z = [d[1] for d in data[A]]
+                max_y.append(
+                    y[z.index(max(z))]
+                )
+                max_z.append(
+                    max(z)
+                )
+            self.play(Create(other_iso_plots))
+            self.wait()
+            max_graph = ax.plot_line_graph(
+                x_values=max_x,
+                y_values=max_y,
+                z_values=max_z,
+                add_vertex_dots=False,
+                stroke_width=3,
+                stroke_color=YELLOW
+            )
+            self.stop_ambient_camera_rotation()
+            self.play(
+                phi.animate.set_value(50 * DEGREES),
+                theta.animate.set_value(220 * DEGREES),
+                run_time=2.0
+            )
+            self.wait()
+            self.play(Create(max_graph), run_time=5)
+            self.wait()
+
+            # Pivot to reveal BE/A plot
+            cheater_section = ax.plot_line_graph(
+                x_values=[2, 3, 4],
+                y_values=[1, 1, 2],
+                z_values=[1.112, 2.6, 5.46],
+                add_vertex_dots=False,
+                stroke_width=3,
+                stroke_color=YELLOW
+            )
+            self.play(
+                FadeOut(iso_plots),
+                FadeOut(other_iso_plots),
+                FadeIn(cheater_section)
+            )
+            self.wait()
+            animations = [
+                FadeOut(ax.y_axis),
+                FadeOut(ax_y_label),
+                phi.animate.set_value(90 * DEGREES),
+                theta.animate.set_value(270 * DEGREES),
+                ax_x_label.animate.shift(IN * 0.5),
+            ]
+            for label in ax.x_axis.numbers:
+                animations.append(label.animate.shift(IN * 0.2))
+            self.play(AnimationGroup(*animations, lag_ratio=0.0), run_time=5)
+            self.play(*[mob.animate.shift(IN) for mob in self.mobjects])
+            self.wait()
+
+            # Discuss fission and fusion
+            ff_line = DashedLine(
+                start=ax.coords_to_point(56, 0, 0),
+                end=ax.coords_to_point(56, 0, 10),
+                color=WHITE
+            )
+            self.play(Create(ff_line))
+            self.wait()
+            fus_arrow = Arrow(
+                start=ax.coords_to_point(15, 0, 1),
+                end=ax.coords_to_point(25, 0, 7.5)
+            )
+            fus_arrow.rotate(PI/2, fus_arrow.get_unit_vector())
+            fis_arrow = Arrow(
+                start=ax.coords_to_point(240, 0, 8.4),
+                end=ax.coords_to_point(90, 0, 9.8)
+            )
+            fis_arrow.rotate(PI/2, fis_arrow.get_unit_vector())
+            self.play(Create(fus_arrow))
+            self.wait()
+            self.play(FadeOut(fus_arrow))
+            self.wait()
+            self.play(Create(fis_arrow))
+            self.wait()
+            self.play(FadeOut(fis_arrow))
+            self.wait()
+            self.play(*[FadeOut(mob) for mob in self.mobjects])
+            self.wait()
