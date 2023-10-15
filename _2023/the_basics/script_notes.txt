@@ -10,3 +10,8 @@ Strong Force
 - Even though neutrons and protons are color neutral, quarks and gluons may quickly leak out and provide an attractive force between nucleons. This is mediated by virtual pions.
     - see this gif https://en.wikipedia.org/wiki/Nuclear_force#/media/File:Nuclear_Force_anim_smaller.gif
 
+--------------
+Binding Energy
+--------------
+- The binding energy is the different in energy between a nucleus and its constituent nucleons on their own
+- Represents the energy released when the nucleus forms from a collection of nucleons.
