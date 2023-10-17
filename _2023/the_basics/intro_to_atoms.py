@@ -187,7 +187,7 @@ class KgToMeV(Scene):
         tex_emp1 = Tex(r"$E=m_{p}c^{2}$").shift(LEFT).align_to(tex_p1, DOWN)
         self.play(Transform(tex_emc, tex_emp1), FadeIn(line))
         self.wait()
-        tex_emp2 = Tex(r"$E=(1.673\text{e-}27\text{ kg})c^{2}$").shift(LEFT).next_to(tex_emp1, DOWN).align_to(tex_emp1, LEFT)
+        tex_emp2 = Tex(r"$E=(1.673\text{e-}27\text{ kg})\cdot c^{2}$").shift(LEFT).next_to(tex_emp1, DOWN).align_to(tex_emp1, LEFT)
         self.play(Transform(tex_emp1.copy(), tex_emp2))
         self.wait()
         tex_emp3 = Tex(r"$E=1.503\text{e-}10\text{ J}$").shift(LEFT).next_to(tex_emp2, DOWN).align_to(tex_emp1, LEFT)
@@ -213,16 +213,17 @@ class KgToMeV(Scene):
         ).set_fill(color=[RED,YELLOW], opacity=0.3)
         eV_animation_background.next_to(left_line, RIGHT, buff=0.0)
         left_line_label = Tex("0 V", color=YELLOW).next_to(left_line, UP)
-        right_line_label = Tex("1 V", color=RED).next_to(right_line, UP)
+        right_line_label = Tex("+1 V", color=RED).next_to(right_line, UP)
         e_dot = Dot(
             [left_line.get_left()[0], left_line.get_center()[1], 0],
             radius=0.15,
             color=BLUE
         )
-        self.play(FadeIn(eV_animation_background), FadeIn(left_line), FadeIn(right_line), Write(left_line_label), Write(right_line_label))
+        self.add_foreground_mobject(e_dot)
+        self.play(FadeIn(eV_animation_background), FadeIn(left_line), FadeIn(right_line), FadeIn(e_dot), Write(left_line_label), Write(right_line_label))
         self.wait()
         eV_label = VGroup(
-            Tex(r"$KE_{e}$ = "),
+            Tex(r"$\text{KE}_{e}$ = "),
             DecimalNumber(
                 0,
                 show_ellipsis=False,
@@ -246,7 +247,11 @@ class KgToMeV(Scene):
             run_time=4,
         )
         self.wait()
-        e_dot.set_x(left_line.get_x())
+        self.play(FadeOut(e_dot))
+        self.wait()
+        e_dot.set_x(left_line.get_left()[0])
+        self.play(FadeIn(e_dot))
+        self.wait()
         self.play(
             e_dot.animate.shift(
                 [right_line.get_x() - left_line.get_x(), 0, 0]),
@@ -388,6 +393,8 @@ class AtomicStructure(Scene):
         orbit_2 = Ellipse(width=4.0, height=2.0, color=BLUE_B, stroke_width=1.5).rotate(3*np.pi/4)
         he3_e1_new = electron().move_to([0.5 * orbit_1.height * np.sin(np.pi / 3), 0.5 * orbit_1.height * np.cos(np.pi / 6), 0])
         he3_e2_new = electron().move_to([-0.5 * orbit_2.height * np.sin(np.pi / 3), 0.5 * orbit_2.height * np.cos(np.pi / 6), 0])
+        self.bring_to_back(orbit_1)
+        self.bring_to_back(orbit_2)
         self.play(
             DrawBorderThenFill(orbit_1),
             DrawBorderThenFill(orbit_2),

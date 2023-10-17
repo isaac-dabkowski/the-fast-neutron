@@ -175,20 +175,15 @@ class CoulombAnimation(Scene):
 
         # Add dot to graph
         dot = Dot(ax.coords_to_point(number.get_value(), number.get_value() ** -2))
-        dot.add_updater(lambda m: m.become(Dot(ax.coords_to_point(number.get_value(), number.get_value() ** -2))))
         self.play(
-            FadeIn(dot)
+            GrowFromCenter(dot)
         )
         self.wait()
 
-        # This traces the path of the plot
-        self.curve = VGroup()
-        self.curve.add(Line(dot.get_center(), dot.get_center()))
-        def update_curve():
-            self.curve.add(Line(self.curve[-1].get_end(), np.array(dot.get_center()), color=YELLOW_D))
-            return self.curve
-        coulomb_plot = always_redraw(update_curve)
-        self.add(coulomb_plot)
+        # This makes the dot trace the path of the plot and leave a trail
+        dot.add_updater(lambda m: m.become(Dot(ax.coords_to_point(number.get_value(), number.get_value() ** -2))))
+        trace = TracedPath(dot.get_center, color=YELLOW).set_stroke(color=YELLOW, width=3)
+        self.add(trace)
 
         # Shift protons inward, calculate Coulomb force
         self.bring_to_front(dot)
@@ -226,11 +221,12 @@ class CoulombAnimation(Scene):
             proton1.animate.set_x(-4.5),
             proton2.animate.set_x(0.0),
             Transform(e_field, e_field_updated),
-            run_time=5,
-            rate_func=rate_functions.exponential_decay
+            run_time=5
         )
         self.wait()
-        self.play(*[FadeOut(mob) for mob in self.mobjects])
+        fadeall = Rectangle(fill_color=BLACK, fill_opacity= 1.0, width=20, height=20)
+        self.add_foreground_mobject(fadeall)
+        self.play(FadeIn(fadeall))
         self.wait()
 
 
@@ -395,11 +391,11 @@ class StrongForceAnimation(Scene):
             tex3,
             tex4
         ).arrange(DOWN, buff=MED_LARGE_BUFF)
-        self.play(FadeIn(tex2))
+        self.play(Write(tex2))
         self.wait()
-        self.play(FadeIn(tex3))
+        self.play(Write(tex3))
         self.wait()
-        self.play(FadeIn(tex4))
+        self.play(Write(tex4))
         self.wait()
         self.play(FadeOut(all_tex))
         self.wait()

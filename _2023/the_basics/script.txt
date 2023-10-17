@@ -1,0 +1,303 @@
+Welcome to TFN! This is a channel I set up to talk about all things nuclear.
+
+I'm starting a video series here aimed at explaining some of the basic concepts behind nuclear science and engineering.
+My goal here is to create something fun and engaging, so I'm not going to go into the level of detail you would find in,
+say, a nuclear engineering grad program with these videos. Rather, I want to help you build intuition on the subatomic
+world and how we leverage it to power our lives in nuclear reactors. So I hope you learn something new and enjoy this series.
+
+For this first video, I'm going to be covering a the some of the absolute basics.
+
+We are going to start off with a quick discussion on atoms as a jumping-off point.
+We'll talk about the subatomic particles that they are made of, their overall structure, and some convensions for how we
+describe them. Next, we will talk about the strong nuclear force, which unpins so many of the phenomena that we take
+advantage of in the field of nuclear engineering. And then finally, we will bring things home with a discussion of
+ nuclear binding energy, and I'm going to walk through the semi-empirical mass formula with you.
+
+Alright, enough logistics, lets dive in!
+
+Atoms are made up of a number of subatomic particles, and the first one we will highlight here is the proton.
+It has a mass of about 1.6e-27 kg (which in plain speak is "not very much"), and has an electric charge of positive 1.
+
+Next up is the proton's negatively-charged friend, the electron. It has a mass of about 9.1e-31 kg, orders of magnitude
+smaller than even that of the proton, and it has an electric charge of negative 1.
+
+Finally, there is the neutron which although I'm biased is definitely the coolest of the three. It has a mass
+slightly larger than that of the proton, and it is electrically neutral with a charge of zero.
+
+Now, in case you're in the part of the population that struggles to make sense of numbers as small as 10^-31, which I think
+is everyone, there is a way to put these masses into a slightly friendlier form which you may see in a lot of texts. And it
+comes to us courtesy of Albert Einstein's most well-known equation E=mc2.
+
+This equation says that mass and energy are really just two sides of the same coin. Because of this, we can actually
+express the masses of these particles in terms of their "rest mass energy". That's the amount of energy you would get
+from converting 100% of an objects mass into energy. Let's do a quick calculation to figure out the rest mass energy
+of a proton.
+
+So we take our expression E=mc2, and we plug in the proton's mass. Now we get a value of 1.503e-10 J. While this is
+the rest mass energy of the proton, this number (like the proton's mass expressed in kg) is still pretty unsightly. To
+fix this, let's put this energy quantity in terms of eV. From the relation below, we can see that one J is equal to 
+6.242e+18 eV. Now while "eV" is a pretty weird name for an amount of energy, the textbook definition is actually
+pretty intuitive. An eV is the amount of kinetic energy an electron would have if you allowed it to accelerate across a
+1V potential. I'm gonna throw a quick visualization of that up on the screen. The 1V potential here causes the
+electron to feel a force to the right. At the instant it reaches the end of this 1V potential, the amount of kinetic energy
+has is exactly one eV. In the world of subatomic particles, this tiny unit of energy is much more convenient to work with
+compared to  Joules.
+
+So with this understanding, let's put the rest mass energy of the proton in terms of eV. Then let's do a quick conversion
+to MeV. "Mega" here is just the prefix for one million. Now we've arrived at a number which is a lot easier to think about
+938 million electron volts, or 938 "MeV". Now from E=mc ^2 we know if we take this energy and divide by C ^2 we get the
+mass of the Proton, and because C^2 is just a constant lots of times in textbooks you'll see that we just leave it out.
+So the mass of the proton can be written as 938 MeV. That's a lot of energy for such a tiny particle. If we go through
+the same process for the neutron and electron, we get the following results. You can see that the neutron has a rest
+mass which is a little bit larger than the proton's at 939 MeV, and the electron has a rest mass of just over half of
+an MeV.
+
+Alright, now that we're familiar with the subocomponents of atoms, let's actually go and build an atom. So right
+here we've got two protons, one neutron and two electrons. Protons and neutrons are packed tightly together 
+within the nucleus, which lies at the center of any atom. Electrons aren't a part of the nucleus. Instead,
+exist in orbitals at the periphery of the atom. Now I can already hear a few of you yelling at your screen that this
+isn't actually what an atom looks like, and of course you'd be right. Atoms dont look like the solar system, and electrons
+dont travel around the nucleus in nice orderly paths like this. In reality, electron orbitals are much more fuzzy. The
+modern quantum understanding of electron orbitals models them more like a cloud. And within these clouds, it's not possible
+to say exactly where electrons are. You can only predict the probability that they're within one region or another.
+
+Now this is as good a time as any to talk about the notation that we'll use to describe atoms. The notation
+looks a little something like this, three symbols arranged like so which can communicate exactly what atom we are
+talking about. Within this notation, we replace X with the chemical symbol that corresponds to our atom's element.
+For the example here, this is an atom of Helium, so we use "H-E".
+
+We replace Z with the number of protons in the atom. Now of course, if you know what element in atom is, you also know the
+number of protons that it has (for helium it is 2), so lots of times this Z is just left out.
+
+We replace A with the total number of nucleons (that is, protons and neutrons) that the atom has, so here it is 3.
+And there you have it! This is an atom of helium-3.
+
+This notation is capable of describing any isotope. Isotopes are a distinct varieties of a single element. Isotopes of the
+same element are distinguished by their mass number. So they have the same number of protons, but different numbers of
+neutrons. An element's isotopes all have the same chemical properties, but they have different masses and thier
+nuclear properties may vary wildly.
+
+Here are a couple more examples, here's an atom of helium-4 - by far the most common isotopes of helium in the universe.
+And here is an atom of lithium-7, with 3 protons and 4 neutrons. Ok, with all of this out of the way, we now have an
+understanding of the building blocks which make up atoms. In the next section, we will discuss some of the forces which
+affect protons and neutrons within the nucleus.
+
+Here's a thought experiment for you. If you have two protons floating in space and you grab one of the protons and
+move it closer to the other, what's going to happen? If you guessed that the other proton would be repelled, you're right!
+But why is this the case? Well, it has to do with the electric fields associated with each of the protons. All charged
+particles create an electric field which permeates all of space.
+
+As you can see from the example on the screen, the strength of the electric field falls off as you get further away
+from the proton. For a single proton floating in space, there's no other field to act on it, so the proton stays put.
+Once we introduce a second proton, they interact with each other's fields and feel a repulsive force. This is why
+like charges repel one another.
+
+The mathematical relationship which describes the forces that charged particles impart upon one another is
+Coulomb's law. Here F is the force that the charge particle will feel, Q1 and Q2 are the charges of each particle, R is
+the distance between the particles, and k sub e is a constant. Let's plot the force that these protons feel as the
+distance between them changes.
+
+So we start with a relative distance of 1, and as we bring the protons closer together you can see the forces that
+they exert on one another increase very quickly. This is due to the one over R ^2 term, which blows up when the
+distance between the Protons gets very small. This simple example shows us that if we pack a collection of protons very
+close together in a bundle, a very strong force aimed at disassembling that bundle will appear.
+
+So this begs the question, how can a nucleus even exist in the first place? Surely forcing a bunch of protons next to once another
+would just result in them flying apart, right? This obviously isn't what actually happens though, and we have the strong nuclear
+force to thank for that. The strong force is one of the four fundamental forces, with the others being gravity, electromagnetism,
+and the weak force. The strong force acts on nucleons to draw them closer to one another.
+
+I'm going to plot the potential energy of two nucleuons due to the strong force as a function of the distance between thet nucleons
+below. Now, the first thing I want to note is that the strong force lives up to its name. It is way more powerful than any of the
+other fundamental forces. However an important caveat here is that the the strong force is only appreciable at very short distances.
+For two nucleons, the magnitude of the strong force is only large when when the nucleons are within a couple fm of one another,
+with a fm being 10^-15 meters. Nucleons themselves have a radius of only around one fm, so this is a really small distance
+we are talking about here.
+
+The second thing that we notice is that the strong force has both an attractive and repulsive component. When the potential energy
+is negative, that means that the strong force is attracting the particles towards one another. When it's positive, that means
+that it's repelling them from one another. So it repels the nucleons at very short distances and attracts them when they move
+further away. Because of this, the nucleons assume a stable configuration, almost like they are bound together by a spring.
+Once we move beyond a few fm of seperation, electromagnetism takes over, as even though it is weaker than the strong force at short
+length scales, it falls off much more slowly with distance and becomes dominant further out.
+
+Another important thing to note is that the strong force doesn't care about charge. Well, electric charge, that is. Protons pull
+on protons, neutrons pull on neutrons, and they both pull on each other. The strong interaction actually acts on what's called "color
+charge", a property held by the quarks that make up all hadrons, of which protons and neutrons are just two examples. And the strong
+force is mediated by particles called "gluons" which bind quarks together.
+
+Something I find really interesting is that the strong force, which holds protons and neutrons together, is really just the "residual"
+component of the strong interaction which acts on quarks. Within protons and neutrons, the color charge of the quarks sums to zero,
+protons and neutrons are "color neutral". With this in mind, it seems pretty weird that the strong force acts on
+nucleons in the first place, as they are effectively neutral particles from its perspective, but an analogy which helps to explain
+this can be found in London Dispersion Forces.
+
+London Dispersion Forces are intermolecular forces, and they emerge from momentary imbalances in charge which allow otherwise
+electrically neutral atoms and molecules in close proximity to attract one another, but these forces are much weaker than the
+electric forces which actually hold molecules together. The strong force can be thought of as the nuclear version of this. Even
+though protons and neutrons are color neutral, particles called Pions can briefly "leak out" of nucleons and act as a force carrier
+which attracts them to one another.
+
+Now, lets talk about the role that neutrons play in keeping nuclei together.
+
+Two protons is not a stable configuration of nucleons. However, if we add a neutron, we get a stable nucleus, this is just the
+Helium 3 nucleus from earlier. There are a couple of reasons why adding neutrons increased the nucleus's stability here. First,
+adding neutrons increases the number of nucleons available for strong interactions without increasing electrostatic repulsion, since
+they are neutral. Neutrons also help "space out" protons from one another. Finally, having both protons and neutrons helps nuclei
+cooperate with the Pauli Exclusion Principle, which states that no two identical fermions can simulataneously occupy the same
+quantum state in a system. While neutrons and protons are both fermions, they are distinguishable, so they are not held to this
+standard with respect to one another. The end result of this is that having a combination of protons and neutrons allows for the
+lower-energy quantum states within a nucleus to be more efficiently filled, lowering the nucleus's overall energy and increasing its
+stability. So neutrons basically act like "glue", they help hold nuclei together.
+
+Now that we know about the strong nuclear force and how it allows for the formation of nuclei, lets talk about nuclear binding energy
+and wrap things up with the semi-empirical mass formula.
+
+Ok, so here we have a Helium-4 nucleus, 2 protons and 2 neutrons. And I'm gonna pose what seems like a pretty simple question, what
+would you expect the mass of this helium-4 nucleus to be? Seems straightforward enough, here we have values for the masses of
+a proton and a neutron. This "amu" unit is the atomic mass unit, which is defined as being equal to exactly 1/12 the mass of an atom
+of Carbon-12, 1.66054e-27 kg. Just a quick note, we often symbolize the atomic mass unit with just the letter "U".
+
+Now it stands to reason that the mass of the nucleus will just be the sum of its components, so we can write out an equation for
+that. The nucleus mass should be the number of protons it has times the mass of a proton, plus the number of neutrons it has times
+the mass of a neutron. So we sub in 2 and 2. Then we plug in the proton and neutron masses. And we arrive at a total mass of
+4.031883 atomic mass units.
+
+So that's our prediction. But if you actually go and measure the mass of a helium-4 nucleus, you'll get different value, one
+slightly smaller than the one we calculated here! The true mass of a helium-4 nucleus is 4.001506 atomic mass units. So we were off
+by 0.030377 atomic mass units. The mass of our nucleus is less than the sum of its parts, so what's going on here?
+
+This is what we call the "mass defect". This missing mass is a result of the fact that because the nucleus is in a stable
+configuration, it would take energy input from us to pull it apart into its constituent parts. The energy required to separate all
+of the nucleons in a nucleus from each other is its "binding energy". Through conservation of energy, it is equally valid to say that
+it is the amount of energy which would be released when a nucleus is formed from a collection of separate nucleons.
+
+Once again, Einstein makes an appearance to explain things away. This missing mass is just the difference in energy between the four
+nucleons when they are out on their own and the four nucleus when they are bound together in the nucleus, which is a more-stable,
+lower energy configuration for them.
+
+If we plug in our mass defect, we see that the binding energy of the helium-4 nucleus is just over 28 MeV. So because the nucleons
+are pulling on each other together through the strong force, it would take a little more than 28 MeV of energy from us to separate
+them.
+
+So our original mass formula is acutally wrong, but we can add a correction to our formula by subtracting this mass defect. And as
+we just showed, this is equal to the binding energy divided by c^2.
+
+This corrected equation we arrived at is called the "semi-empirical mass formula". The first two terms here are really easy to calculate,
+but figuring out the binding energy is a little more complicated, so lets expand that term out. OK, so this looks a little wild at first,
+but what we have here is a function for calculating the binding energy of a nucleus as a function of the nucleus's mass number and its
+atomic number. The terms a_v, a_s, a_c, a_a, and a_p are experimentally determined coefficients, hence the "empirical" in the name, and they
+are all in units of MeV. Now this equation is only "semi-empirical" because the form of each of these terms has a theoretical backing in
+what's called the "liquid-drop model" of the nucleus, which a crude approximation that treats nuclei as spherical volume made up of an
+incompressible fluid.
+
+If we take these theoretical terms and attach coefficients to them, and then adjust the coefficients to fit observed data, we arrive at
+the semi-empirical mass formula. Now, lets talk thorugh the rationale behind each of these terms.
+
+The first term is called the "volume term" with the form a_v times A. This describes the strong force between neighboring nucleons. Now
+because the strong force has such a short range, if you were to add an additional nucleon to the center of a nucleus, it would only really
+feel a pull from its immediate neighbors. So adding a nucleon should increase the overall binding energy of the nucleus by a fixed amount,
+leading to this term scaling linearly with the volume of the nucleus, which is just proportional to the number of nucleons in the liquid
+drop model, and the magnitude of a_v is 15.835 MeV.
+
+You'll notice that with the exception of the last term in the equation, which we'll get to, the volume term is the only positive term in this
+formula. All the others subtract away binding energy to correct the assumption we made in scaling binding energy linearly
+with the mass number in the volume term.
+
+The second term is called the "surface term" with the form a_s time A to the 2/3. This term corrects for the fact that nucleons on the surface of
+the nucleus will have fewer neighbors than nucleons in the center. We need to subtract away the missing binding energy of these surface nucleons.
+Now this term should scale with the surface area of the nucleus, if the surface area gets bigger, that means there are more neucleons on the
+surface with missing neighbors, and so this term should grow in magnitude. The surface area of a sphere is proportional to the volume raised to
+2/3, leading to the surface term's form. As the mass number increases, this term does not scale up as fast as the volume term, which makes sense,
+because a sphere's surface area grows slower than its volume. The magnitude of a_s is 18.33 MeV.
+
+Next up is the "Coulomb term" with the form a_c times Z times Z minus 1 all over A to the one third power. This term corrects for the fact that we
+need to reduce the binding energy due to the Coulombic repulsion between the protons. Now unlike the strong force, electromagnetism
+has no problems acting at a distance, so all of the protons in a nucleus will feel a repulsive force from all of the other protons, regardless of
+if they are neighbors or not. For a collection of Z protons, there will be Z times Z - 1 ways to pick an ordered pair of protons, so this term scales
+with the "number of proton-proton" interactions, so to speak.  If we model the nucleus as a sphere of uniform charge, we find that
+its potential energy is inversely proportional to its radius, so we divide by A to the 1/3 since we take volume to be proportional to A. As we saw
+earlier in the video, electrostatic repulsion decreases with distance, so it makes sense that this term would decrease if we pack more nucleons
+into the nucleus ans space out the protons. The magnitude of a_C is 0.714 MeV.
+
+Now the last two terms are a little more tricky to understand, and we'll start with the asymmetry term. Remember that the Pauli Exclusion Principle
+prevents like-fermions from taking on the same quantum state in a system. If we had a hypothetical nucleus made up of just protons or just neutrons,
+the nucleons would be forced into higher energy quantum states than if we had a nice mix of protons and neutrons. This is actually the main reason for
+the two-proton nucleus from earlier not being stable. Note that A - 2 Z is equal to the number of neutrons minus the number of protons, so the numerator
+is just the square of the imbalance between the two. The effect of asymmetry is more pronounced in smaller nuclei than in larger nuclei, so we divide
+by the mass number. The magnitude of a_a is 23.2 MeV.
+
+Finally, we have the pairing term with the form delta of A and Z times a_P times A to the negative one half. This describes the effect of spin coupling.
+Due to the Pauli Exclusion Principle, it is preferable to have an even number of like-nucleons, as there can be one spin-up particle for every
+spin-down particle. If there is an odd number of a type of nucleon, one of the nucleons won't have a partner to pair off with and it will lose out
+on the lower energy state it could achieve thorugh spin-coupling. This delta function captures this. If there is an even number of protons and an even
+number of neutrons, all protons and neutrons will be spin coupled. In this state, we get an increase in the overall binding energy of the nucleus, so
+the delta function takes on a value of positive one. If we have an odd number of protons and an odd number of neutrons, we will have two nucleons that are
+not spin coupled, so we get a decrease in the overall binding energy and delta has a vlue of negative 1. In any other case, we will have one uncoupled
+proton or neutron, so this will basically cancel out the effect of spin coupling on the other species. The A to the negative 1/2 term is more or less
+empirically determined, as a theoretical calculation with the liquid drop model would give us a one over A term instead, but A to the negative 1/2 is
+found to fit real-world data better. The magnitude of a_p is 11.2 MeV.
+
+Now that we have an understanding of the phenomena behind binding energy, I want to do a couple calculations to show this formula's real-world applicability.
+
+Lets use the binding energy formula to answer the following question, for a collection of 56 nucleons, what number of protons will maximize binding energy?
+Let's plot the atomic number on the X axis and the overall binding energy of the nucleus on the Y axis. We see that the binding energy takes on a sort of
+parabola shape as a function of the atomic number, there's a specific combination of protons and neutrons that gives us the maximum possible binding energy.
+Lets talk about all of the terms from the binding energy equation and how they are changing here. The volume and surface terms are constants across this curve,
+since they only depend on the mass number which we have fixed at 56. When we have too many protons, the Coulomb term also increases considerably to the
+detrement of binding energy. When we move away from an even split of protons and neutrons in either direction, the asymmetry term gets really large. And so the overall
+binding energy of the nucleus falls. Although it is really hard to see, there is a small zig-zag pattern within this plot which is attributable to the pairing term.
+The binding energy is slightly higher when there is an even number of protons and neutrons, it's just hard to see since this is a fairly heavy nucleus.
+
+The maximum point on this curve occurs at when there are 26 protons, which corresponds to iron. Iron-56 is one of the most stable nuclei out there, so it makes
+sense that it is at the top of the curve.
+
+Let's do another quick example, for a collection of 238 nucleons, how many protons will maximize binding energy? If we plot the curve and take a look at the
+maximum, we get an answer of 92 protons, which corresponds to uranium. Uranium-238 is the most common isotope of the element on Earth, making up around 99.3%
+of all of the uranium we dig out of the ground. One quick point of note here is that although the overall binding energy of uranium 238 is much higher than
+that of iron 56, the binding energy per nucleon is lower.
+
+I'm gonna close this out with one last plot to show these results for every isotope out there, which is going to need three axes. On the x-axis, we will have all
+mass numbers from 1 to 250. The y-axis will correspond to the atomic number. Each point on this x-y plane will correspond to a unique combination of protons and
+neutrons. On the z-axis, we will plot the binding energy per nucleon for these nuclei, so we're seeing how tightly bound together the nucleus is on a per-nucleon
+basis. We get a plot that look like this.
+
+So all of the concepts we talked about previously have built up to this plot. Mass-energy equivalence helps us explain the mass defect in the context of nucleons
+bound together by the strong force. And the terms in binding energy equation from earlier cause this surface to take on the shape that it does.
+
+Each slice of this plot shows how, for a set number of nucleons, binding energy per nucleon varies as a function of the number of protons, so these slices are
+really just the plots that we made just a minute ago. This surface is the result of stacking these plots together for A values up to two-hundred and fifty.
+
+Lets take the slice at a mass number of 56, this is first plot we made! And up here at the top, that's iron-56, right up near the top of the surface.
+
+ Now let's take the slice at a mass number of 238, this is the second plot we made, and here is uranium 238! Now for visual clarity I only plotted every tenth
+slice to start out with, so lets fill the surface in with the rest of the curves. There's a lot of data here, but there's a couple cool things we can do with it
+to drive some more points home.
+
+What I am going to do now is take the point on each slice that produces the highest point on the curve and connect them together with a line. This will pass right
+through iron-56, uranium-238, and a whole bunch of other very stable nuclei.
+
+I've actually plotted results for way more isotopes than actually exist to illustrate these parabolas, so lets correct that. This is our new plot when we constrain
+ourselves to only look at isotopes that have actually been observed.
+
+If we take a top-down view of this plot, we get a shape familiar to any nuclear engineer. Its the chart of the nuclides! If you have seen the chart of the nuclides
+before, you probably notice that the yellow curve (which tracks the highest binding energy per nucleon for each mass number) follows the line of stability very
+closely, and this is no coincidence.
+
+If we look at this plot on its side, we get another very famous plot. You will find this curve in any introductory text on nuclear physics or engineering, it shows
+us how binding energy per nucleon changes as a function of the mass number. The peak of the curve runs straight up through iron and nickel, two of the most stable
+elements out there. If you are on the left side of the peak, increasing the mass number by smashing nuclei together to form heavier nuclei increases your binding
+energy and mass defect, and thus releases energy. This process is called nuclear fusion, it's what gives the sun its power, and its the process by which the
+nuclear fusion reactors of the future will produce their energy.
+
+Stars fuse hydrogen into helium, and then helium into beryllium, and so on an so forth, moving up this curve and producing energy. This process stops when the
+start starts to fuse atoms together to make iron and nickel, they have reached the top of the mountain, there is simply no energy left to be gained from making
+heavier atoms!
+
+On the right side of the peak, we see the reverse. Here, breaking apart heavier atoms into lighter components moves us up the curve and releases energy in a
+process called nuclear fission. This is why the fuel in our nuclear fission reactors is all heavy isotopes, like Uranium-235. It think its pretty awesome that
+with just the couple of concepts we covered here, we can find hints to explanations for big questions like why stars die when they make iron and why uranium makes great
+reactor fuel.
+
+Thanks for watching, I hope you enjoyed the video! I'm not going to keep myself to a schedule with uploads in this series, this video took me long enough
+to make as is, but in the next chapter I think I want to cover radioactive decay, Q-values, and binary nuclear reactions. Hope to see you there!
