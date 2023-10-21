@@ -1,0 +1,323 @@
+Welcome back to The Fast Neutron! This is installment 2 in my ongoing series on the basics
+of nuclear science and engineering. Today's video is all about nuclear decay.
+
+If you haven't seen part 1, I have a link to it down in the description. We already went
+over some of the fundamentals of atoms including what composes them, how we talk about them,
+and the forces which hold them together. If you have seen the last video, thanks for coming
+back!
+
+The first item on the agenda is Q-values. This will be a quick section as they are a pretty
+simple concept, but they are crucial to understand for all of the discussion that will follow.
+
+After that, we will talk about radioactive decay, which is the mechanism by which unstable atoms
+shed energy to assume more stable forms. We'll talk about the different types of decay, the particles
+that they give off, and the energy distributions of those particles.
+
+Finally, We are going to construct the chart of the nuclides, and use our newfound knowledge of nuclear
+decay to vizualize some trends.
+
+Alright, onto Q values.
+
+You're here today to learn a little bit about nuclear decay. At its base level, nuclear decay is just
+a set of processes by which nuclei pass energy around and change their structure to become more stable.
+With this in mind, it would be pretty useful to have a quantity which could be used to characterize the nature of
+these energy exchanges, so - how much energy is being passed around, is energy being consumed or released,
+things of that nature. This is exactly what Q values convey.
+
+For a nuclear reaction or decay event, the Q value is the change in energy between the initial state of
+the system and the final state of the system. This change in energy is most commonly seen as a change in the
+kinetic energy of the particles within a system. Now because of conservation of energy, we know that we
+can't just have energy appear out of thin air, so where is the change in energy coming from?
+
+Like we saw in our last video, energy and mass are just two sides of the same coin, so we can write an
+energy balance for a system as follows. The final overall energy in the system has to be equal to the initial
+overall energy in the system. Now there are really two types of energy that we need to look at here, and these
+are the kinetic energies and rest mass energies of the particles participating in the reaction.
+
+The initial overall energy of the system is just the kinetic energy of
+all of the reaction precursors plus their rest mass energies, and the final overall energy of the system
+is just the kinetic energy of the reaction products plus their rest mass energies. With a little rearranging, we can see that (through
+conservation of energy) the change in the kinetic energy within the system comes from a change in the overall mass
+within the system. So when a nuclear reaction or decay event occurs, a little bit of mass is being transformed
+into energy, or vice versa.
+
+So we sub in this relationship to our Q value formula, and we arrive at our final equation. The Q value for a
+reaction is equal to negative delta M time c^2. Now notice that at no point in this derivation was there any
+stipulation that Q has a certain sign. If the reaction's outputs have less mass than the reaction's inputs,
+Q will be positive. In this case, we have an "exothermic reaction" which signals the release of energy. Some
+mass is converted into energy which may be carried away by the reaction products as kinetic energy. You can
+see an example below, here comes this slow moving particle towards the target and BAM! Energy is released
+and the less massive products go zipping away.
+
+If the mass of the reaction products exceeds the mass of the reaction precursors, Q will be negative. This is
+the case for "endothermic" reactions, where some of the kinetic energy of the reaction inputs is converted into
+mass. Here's an example of that, along comes the particle, and the more massive products move away with lower
+kinetic energies.
+
+Now for the sake of clarity, I did leave an important detail out here. The derivation that we followed assumed that
+all of the reaction precursors and products were in their ground state. But through a variety of processes, it
+is possible for nuclei to take on higher-energy "excited states", where the nucleus has a certain amount of
+excess energy associated with it. Because of mass-energy equivalence, we can write the mass of an excited nucleus
+as being equal to the nucleus's rest mass energy in the ground state plus its excitation energy over c^2. We use
+an asterisk in our isotopic notation to indicate that a nucleus is excited. Keep this in mind for later, it will come
+up again when we talk through gamma decay.
+
+OK, with our new understanding of Q-values, lets move onto the subject of radioactive decay.
+
+Put simply, radioactive decay is how atoms with too much energy transform themselves to take on more stable states.
+To shed their excess energy, unstable atoms release particles which carry it away in the form of kinetic energy and
+their rest mass energies. Now there are a number of different types of radioactive decay, in fact there are too many
+to go in depth on all of them in this short video, but I'm gonna go over some of the major ones that make up the
+majority of the common decay modes we see in the subatomic world.
+
+First up is alpha decay. This type of decay is mostly seen in heavy unstable nuclei, typically those with mass numbers
+well over 200. During alpha decay, the nucleus spits out an "alpha particle", which is just a helium-4 nucleus. Two
+protons, two neutrons. So with this in mind, we can write out a generalized equation for what alpha decay looks like.
+Our "parent" nuclide undergoes an alpha decay event, and we get a "daughter" nuclide which has a mass number four less
+than the parent's and an atomic number two less than the parent, and an alpha particle. The Q-value, which is the
+mass of the parent particle minus the mass of the daughter particles all time c^2, is therefore just the mass of nuclide
+"X" minus the mass of nuclide "Y" minus the mass of an atom of helium-4, all times c^2. At first, it might seem weird that
+we use the mass of helium-4 instead of the mass of an alpha particle, but we need to remember that although the daughter
+nuclei has an atomic number two less than the parent, we don't destroy any electrons. If we were to use the mass of an alpha
+particle instead of helium-4, we would have an inbalance of two electrons in this equation which would throw off our Q
+value.
+
+Lets look at an example of alpha decay in action. We start with an atom of Polonium-210, after it kicks off an alpha particle,
+it is no longer polonium, but rather an atom of lead. Using the formula above, we can calculate the Q value for this reaction
+by substituting in the appropriate mass values, and we arrive at a value of 5.4076 MeV being released by this decay.
+
+Now an interesting question we could ask about alpha decay is "how is the energy released in the decay split between the
+daughter nuclide and the alpha particle?" Well we can start to answer this question by setting up the conservation of
+energy for the reaction. All of the Q value's energy will go into the kinetic energies of the daughter and the alpha, so
+we arrive at the expression Q equals 1/2 the mass of the daughter times its velocity squared plus 1/2 the mass of the alpha
+times its velocity squared. Now this equation alone isn't enough to answer our question, we have two unknowns here, the
+daughter nuclide and the alpha could split the Q value in an infinite number of ways. But once we take into account conservation
+of momentum, we can get a solution. So through conservation of momentum we know that the momentums of the reaciton products must
+be equal to one another. If the decay event sends the alpha zipping off to the left, the daughter nuclide better be going to
+the right. So the mass of the daughter nuclide times its velocity is equal to the mass of the alpha times its velocity.
+  
+I'll spare you the algebra, but if we solve this system of equations for the kinetic energies of the two particles, we get
+the following expressions. The kinetic energy of the daughter nuclide is equal to the mass of the alpha over the sum of the
+masses of the reactions products, all times the Q value. And the kinetic energy of the alpha is of the same form, just with
+the mass of the daughter nuclide in the numerator. This is pure kinematics at work. Because there are just two reaction
+products, there is exactly one energy each of them can take on. And because the alpha particle will always have a lower
+mass than the daughter nuclide, it will end up leaving with most of the Q value.
+
+So for our Polonium decay from earlier, this works out to the daughter nuclide carrying away just 0.1 MeV and the alpha particle
+carrying away the remaining 5.3 MeV.
+
+Something pretty interesting about alpha decay is that despite the fact that alphas are among the heaviest particles emitted
+in decay events, their ability to penetrate matter is not very strong. Their large size and strong charge means they interact
+very strongly with just about anything they come into contact with and dissipate their energy quickly. Just a couple of
+centimeters of air or a single sheet of paper is enough to stop an alpha particle, and they wont penetrate more than a fraction
+of a millimeter into human tissue.
+
+Because of this, alpha emitters can be safe to touch, even with your bare hands. The outer layers of dead skin cells are
+more than enough to stop alpha particles from damaging living tissue. A common misconception is that uranium metal is dangerous
+to be near. This isn't the case because uranium primarily decays through alpha decay. With this being said, alpha emitters are
+extremely dangerous if ingested. In this case, the alpha particles will deposit all of their energy directly into tissue.
+Polonium-10, the isotope from earlier, is lethal if as little as one microgram is ingested, making it orders of mangitude more
+dangerous than cyanide on a per-mass basis.
+
+Next up is beta decay. Remember from the last video the binding energy of a nucleus is in part determined by the balance of
+protons vs. neutrons. Where alpha decay allowed for nuclei with too many nucleons to shed energy, beta decay provides a path
+for nuclei with too many protons vs. neutrons (or vice versa) a way to reach more stable states. Beta decay comes in two forms,
+beta-plus and beta-minus, and we'll start with beta-minus.
+
+Beta-minus decay is seen in atoms with too many neutrons. In beta-minus decay, a neutron is converted into a proton through a
+process meadiated by the weak interaction, one of the four fundamental forces. Now a new positive charge has been created where
+there wasn't one before, so to conserve charge, some of the energy of the decay goes into the creation of an electron which is
+ejected from the particle. This electron is known as a "beta particle" in this process.
+
+An additional particle called an electron antineutrino is also created in beta minus decay. Neutrinos are particles which interact
+with only the weak force and gravity, and they have extremely small masses.
+
+So we can write out a generalized equation for beta minus decay, where the parent nuclide decays into a daughter nuclide with the
+same mass number (but one more proton) as well as an electron and an electron antineutrino. Lets look at a quick example of beta
+minus decay.
+
+So we start with an atom of Carbon-14, which has more neutrons than it would like to have. After it decays, we are left with an
+atom of nitrogen-14, an electron, and an electron antineutrino. Lets write out a Q-value equation for this decay event.
+
+Our Q value will just be the mass of carbon-14 minus the mass of nitrogen 14 minus the mass of an electron antineutrino. Now you might
+be thinking that we left out the mass of the beta particle, but since a neutral atom of nitrogen has one more electron than a neutral
+atom of carbon, the beta particle's mass is already included on the right hand side. So we plug in the masses to get the following
+expression. The mass of the electron antineutrino is so small that we actually don't have a good measurement for it, just an
+upper bound on what it *might* be, so for this reason we can ignore it. And we get a value of 156.5 keV.
+
+So that's beta-minus decay. Now we will go through the process of calculating the energy carried away by the beta particle, but it is
+a little more involved than the kinematics we used to solve for the alpha particle's energy, so I'll introduce beta-plus decay first
+and we will come back to this in a minute.
+
+Where beta minus decay helps nuclides with too many neutrons by converting a neutron into a proton, electron, and electron
+antineutrino, beta-plus decay does just the opposite. For atoms with too many protons, beta-plus decay converts a proton into
+a neutron, a positron, and an electron neutrino. So our generalized formula for beta-plus decay is as follows.
+
+A positron is just the antimatter counterpart to an electron. It has the same mass and spin as an electron, but it has a charge of
+positive one. Lets look at an example of beta-plus decay in action.
+
+We start with an atom of magnesium-23, which has more protons than it would like. And after the beta plus decay we are left with
+an atom of sodium-23, a position, and an electron neutrino. We can calculate the Q value in a very similar manner to that of the
+beta minus example from earlier. One difference here though is that the mass of the positron is not included in the mass of the
+daughter nuclide, since it has one fewer proton than the parent, so we need to account for that in the formula by subtracting
+twice the mass of a positron. After a little math, we arrive at a Q value of just over 3 MeV.
+
+OK, now lets go back and talk about how much energy beta particles take away from these decay events. With alpha decay, we were
+left with two reaction products, so there is just one way that they could split the Q value to conserve energy and momentum. With
+beta decay, we are left with three reaction products, so there are an infinite number of ways that they could divvy up energy to
+to the same.
+
+The beta particle could take away any amount of energy ranging from 0 eV to the entire Q value, but with the help of quantum mechanics,
+we can calculate the probability distribution which governs the energy that the beta particle leaves with. It looks like this.
+
+So this is a probability density function which represents the probablity per unit energy that the beta particle will have some kinetic
+energy T-sub-e. The big C out front is a normalization constant. This is set such that when you integrate this expression over all energies
+from 0 to Q, you get 1. The F(Z,T_e) is a non-relativistic Fermi function. This accounts for the fact that a beta minus particle will be
+pulled in by the nucleus it is leaving due to electrostatic attraction, and the fact that a beta-plus particle will get an extra kick as
+it leaves for the same reason.
+
+The form of the Fermi function is as follows. F is approximated as 2 pi x over 1 minues e to the negative 2 pi x. And x is defined as minus
+or plus the atomic number of the daughter nuclide time a jumbled mess of constants times 1 over beta. Now the notation is a bit confusing
+because we are talking about beta decay, but the beta here comes from special relativity, its the velocity of the beta particle over the
+speed of light. We set the minus plus term depending on the type of beta decay we are analyzing. If it is beta plus, we set it to minus.
+If it is beta minus, we set it to plus.
+
+Now this jumbled mess of constants I mentioned earlier - the square of the elementary charge over 4 pi times the permittivity of free space
+times the reduced Plank's constant times c - that mess, it actually has a name, the fine structure constant, which we represent with alpha.
+All of the units in this fraction cancel out, so the fine structure constant is just a number. It governs the coupling strength of elementary
+charges to the electric field, and cool little physics easter egg is that the fine structure constant has a value very verrrry close (but
+not exactly equal) to 1/137. Why 137? Well, nobody knows. The fine structure constant is just a fundamental constant, it is the way it is
+because it is the way it is.
+
+Alright, lets plot the energy distributions for a hypothetical beta plus and beta minus decay. On the x-axis, we have the beta energy,
+and on the y-axis, we have our probability density function. Now you can see that for a beta-plus decay, its actually impossible for
+the positron to leave the decay with zero energy. This is because of the kick it gets from the protons in the nucleus. For beta-minus
+decay, it is possible for the electron to leave with zero energy, as the positively-charged nucleus pulls on the beta minus particle.
+The distributions for both decay modes approach zero as the beta's energy gets closer to the Q-value. 
+
+Now like alphas, it doesn't really take all that much to stop beta particles. Just a couple of centimeters of a material like plastic
+is typically all that is required. Since betas are charged, they interact stongly with any matter they come into contact with and
+quickly dissipate their energy. With this being said, we need to consider what's called "bremsstrahlung" radiation. "Bremsstrahlung"
+is German for "braking radiation", it's secondary radiation emitted in the form of photons when beta particles slow down. Using
+shielding materials with low atomic numbers can help to combat this, as the acceleration the beta particles experience while slowing
+down will be reduced.
+
+Finally, lets talk about gamma decay. Gamma decay is a pathway for nuclei with too much energy to reach a lower energy state through
+the emission of a gamma particle, which is just a photon. Now unlike alpha and beta decay, gamma decay acts on excited nuclei and does
+not transmute the parent nuclide. This means that there is no change in the parent's composition, it's a pure release of excess energy.
+So the generalized equation for a gamma decay can be written as follows - remember that the asterisk means that a nucleus is in an
+excited state.
+
+An example of gamma decay in action can be seen below, where an excited atom of plutonium-240 jumps to its ground state and spits out
+a photon. We can write out the Q value of this equation as follows. The mass of the excited nucleus is just the mass of the nucleus
+in its ground state plus the excitation energy over c^2, so everything here cancels out and we find that the Q value for a gamma
+decay is just equal to the excitation energy.
+
+Almost all of the Q-value's energy is carried away by the photon. Photons are massless, but they do have momentum which the daughter
+nuclide must conserve, but in practice the recoil energy of the daughter nuclide is typically so small that it is fair to say that
+the energy of the photon is just the Q-value.
+
+It is considerably more difficult to stop gammas than it is alphas or betas. A high energy photon has no problems punching through
+most materials. The best gamma shielding materials are those with high atomic numbers, so heavy metals like lead are commonly used.
+This is why lead aprons are used by medical professionals performing xrays, they need a high-Z material to protect themselves from
+high energy photons.
+
+Ok, now that we have learned about some of the most common forms of radioactive decay, I want to bring things home by constructing
+the chart of the nuclides from scratch and using it to vizualize some trends on the ways that isotopes decay.
+
+So first, lets set up our axes. On the x-axis, we will have the number of neutrons. And on the Y-axis, the number of protons.
+This is pretty similar to the setup for the final plot from the last video, but instead of plotting the mass number we have the
+number of neutrons. The information expressed is equivalent, though. Each 1x1 cell in this plot represents a unique isotope, so
+lets fill the space with all isotopes that have data on.
+
+Each row in this grid corresponds to an element, so for 26 protons we have iron. And for 92 protons, we have uranium. One thing
+that is pretty interesting to notice is that the grid is pretty thin in the x direction for light elements and heavy elements,
+and it gets much wider for elements closer to halfway up the periodic table. The reason for this is that the asymmetry term from
+the binding energy equation in the semi-empirical mass formula is very dominant at low mass numbers. So for elements with low
+atomic numbers, we cant support a very large imbalance in the number of protons and neutrons. Once we move up the grid to the
+heaviest atoms, we get into some really unstable territory. The nuclei get very large and last only a short amount of time before
+decaying, and there aren't that many isotopes supported for each superheavy element. In the middle of the grid's height, we have
+elements which are heavy enough to support a reasonably big imbalance in protons vs. neutrons, but light enough to avoid some of
+the decay modes that plague heavy elements.
+
+Now obviously not all of these isotopes are stable, in fact, only a small portion of them are. I'm going to highlight them by
+coloring them black. For each element, we can see that we typically only have a few stable isotopes. Once we move up past lead
+with an atomic number of 82, there are actually no stable isotopes. The notion of stability here is in some sense pretty relative.
+Some of the squares on this grid represent isotopes that only exist for fractions of a microsecond on average before they decay.
+Others represent isotopes that are indeed unstable, but decay extremely slowly. As a matter of fact, it was long believed that bismuth,
+with an atomic number one higher than lead's at 83, was the heaviest element with a stable istoope. But back in 2003, it was found
+that bismuth-209, which was though to be stable, actually undergoes alpha decay at a rate so slow that its half life is longer than
+the age of the universe. We'll get into half lifes in the next video, I just though that this was an interesting point to mention.
+
+An interesting trend can be seen if we plot a line which tracks along all the isotopes with an equal number of protons and neutrons.
+Isotopes above this line have more protons than neutrons, and isotopes below the line have more neutrons than protons. If we zoom
+in on the lightest elements, we see that their stable isotopes pretty much all sit on this line. However, as we introduce more and
+more protons into the mix, the "line of stability" as its called starts to deviate away from an even split of protons and neutrons,
+and stable isotopes consistently have many more neutrons than protons. Once enough protons are in the mix, binding energy benefits
+from having a surplus of neutrons to space out the protons and increase the number of strong interactions, and the penalty for having
+an imbalance between the two species drops.
+
+Now lets start to color this plot in with all of the unstable isotopes. First up, alpha decay, which we will color in with yellow.
+Remember from earlier how we talked about alpha decay mostly affecting the heaviest isotopes, especially those with mass numbers
+greater than 200. So we would expect for the portion of the grid near the top right to be home to lots of alpha emitters, and that
+is what we see! For these heavy isotopes, kicking off a cluster of two protons and two neutrons is a great way to move toward the
+line of stability.
+
+There are a few proton-rich isotopes with around 50 protons which primarily undergo alpha decay, these are isotopes like Antimony 104
+and Tellurium 105, which are pretty unusual.
+
+Since we are in Tellurium's neighborhood, we can pay a visit to the longest-lived unstable isotope that we know of, Tellurium-128. Now
+this isotope is unstable, it undergoes a very unusual double beta minus decay. But its half life is over 160 trillion times the age
+of the universe. If you had an entire gram of tellurium 128, you could only expect to see a single atom decay every 674 years or so.
+
+There actually are some of isotopes which may be more stable than this. There is a set of isotopes which are called "obeservationally
+stable". Nuclear physics predicts them to be unstable, but we have never actually been able to measure them decaying in an experiment.
+
+Perhaps the strangest alpha emitter is beryllium 8. By far the lightest alpha emitter, this little isotope lasts only a fraction of a
+femtosecond on average before it spits out an alpha particle and becomes an atom of helium-4 itself. The fact that beryllium-8 is
+unstable actually has some pretty important ramifications for stellar nucleosynthesis. The fact that such a light isotope with an even
+split of protons and neutrons is unstable leads to a sort of bottleneck in the production of heavier isotopes within stars. If the fine
+structure constant was just slightly different, it would be possible for beryllium-8 to be stable. In this case, the missing bottleneck
+would have a considerable impact on the abundance of heavy isotopes in our universe.
+
+Alright, now lets talk beta plus decay, which I will color in pink. There is actually another similar decay mode called electron capture
+which I am going to bundle in here. Electron capture sees an atom basically "eat" one of its inner-shell electrons and convert a proton
+into a neutron to conserve charge. The daughter nuclide for electron capture is the same as for beta plus decay and we still see the
+emission of a neutrino, but we don't emit a positron. Any atom that can undergo electron capture can also undergo beta-plus decay, so
+we will just bin them together.
+
+Now beta-plus decay involves swapping a proton for a neutron, so this would move us one space to the right and one space down on our
+grid. For this reason, we should expect to see lots of beta-plus emitters in the upper portions of the grid, as moving down and to the
+right would bring us closer to to the line of stability. And that's exactly what we see!
+
+Beta-minus decay is more or less just the inverse, I'll color it in blue. Here, we swap a neutron for a proton, so we will move one
+space up and one space to the left on our grid. For this reason, we expect many isotopes below the line of stability to decay through
+the emission of an electron, and that is exactly what we see.
+
+The only other decay mode we analyzed earlier that we haven't mentioned is gamma decay, but remember that gamma decay doesn't change
+the composition of the parent nuclide, just it's energy. So gamma decay doesn't actually move us anywhere on this plot.
+
+Now there are a few scattered spaces in this chart which still haven't been filled in. These are some more exotic decay forms that,
+for the sake of time, I didn't go into detail on in this video. The first up is proton decay, where a proton is ejected from the nucleus,
+simple as that. I'll color it in orange. Proton decay is typically seen in very unstable proton rich nuclei with lower atomic numbers.
+
+Next up is neutron decay, where a neutron is ejected from the nucleus. I'll color it in purple. Neutron decay is seem in some neutron-rich
+nuclei with low mass numbers.
+
+Finally, some heavy isotopes are capable of spontaneously undergoing nuclear fission as a decay mode. Californium-252 is a famous example
+here. Normally, it descays thorugh alpha emission, but around 3% of the time, it descays through spontaneous fission. This has made it
+useful as a startup source in nuclear reactors.
+
+To close this out, lets quickly walk through a decay chain to show how an unstable isotope progressively transmutes itself to reach a
+stable state. Just as an example, we'll start with an atom of thorium-232. This undergoes alpha decay, losing two protons and two
+neutrons, so we move two spaces down and two spaces to the left to radium-228. This undergoes beta minus decay, swapping a neutron
+for a proton, so we move one space up and one space to the left. Now we have actinium-228, which beta minus decays to thorium-228.
+This kicks off a chain of alpha decays that takes us to Radium-224, then Radon-220, then polonium-216, then lead-212. This beta minus
+decays to bismuth-212, which beta minus decays to polonium-212. And one last alpha decay brings us to lead-208, which is stable.
+
+Every location on this chart that isn't on the line of stability has its own path it can take to reach a stable state. And there you
+have it! The chart of the nuclides. I hope that the trends here make sense to you, and that you have a newfound understanding of some
+of the ways that unstable nuclei shed energy.
+
+Thanks for watching. for the next video I'm going to  a part 2 on nuclear decay, where we will go over the equations that govern
+decay and the math behind radioactivity. Hope to see you there!

@@ -164,3 +164,4 @@ cython_debug/
 *.svg
 *.tex
 partial_movie_files/
+cross_sections.json
