@@ -1,0 +1,313 @@
+Welcome back to The Fast Neutron! This is installment 3 in my ongoing series on the basics
+of nuclear science and engineering, and its the second part of a pair of videos on nuclear
+decay. Today, we are going to be going into the mathematics behind radioactive decay.
+
+If you haven't seen the last video, I would highly recommend checking it out. We went over
+the different common types of nuclear decay and discussed the kinds of isotopes that tend
+to give off energetic particles these different modes. While you can certainly pick things
+up from here, I think the last video should help you gain a little bit of intuition on *why*
+some atoms undergo decay.
+
+For today's video, we will start off by introducing the concepts of decay constants and half
+lives. These quantities are the building blocks we will use in constructing equations that
+describe how populations of radioactive isotopes change over time. After that, we will talk
+through the concept of activity, as well as the units we use when talking about activity.
+From there, we will do a quick section on branching ratios, which come into play when a single
+isotope can decay in more than one way. Next we will solve some basic decay equations with and
+without isotopic production to contend with, and then finally, we will talk through decay chains
+and do a couple quick examples to show how we can predict the populations of different species
+of isotopes over time. Here we will introduce concepts like the Bateman equations, transient
+equilibrium, and how the matrix exponential can be used to make our lives easier in these
+calculations.
+
+To motivate our discussion here, it's good to remember the simple fact that different unstable
+isotopes can and do decay at different rates. If we have a single atom of uranium-235, its likely
+it stick around for the better part of a billion years before it decays via alpha emission into
+thorium-231. For other isotopes like, say, chromium-47, you wouldn't have to wait more than a
+half of a second before you can expect it to have undergone beta-plus decay into vanadium-47.
+And there are a plethora of isotopes that last a much, much shorter amount of time than that.
+
+The rates at which different isotopes decay span many orders of magnitude, 54 orders of magnitude
+to be exact. And the quantity that underpins these rates is called the "decay constant". This
+constant effectively describes the rate at which a given isotope undergoes decay. We represent
+decay constants with a lowercase lambda, and decay constants have units of inverse time.
+
+For a given isotope, the decay constant is defined as the reciprocal of the isotope's "mean
+lifetime", which we represent with the greek letter tau. So an isotope with an expected lifetime
+of 10 seconds will have a decay constant of 0.1 inverse seconds. And for every second that passes,
+the isotope will have one in 10 chance to undergo decay.
+
+Now a crucial point of note here is that decay constants are in fact - constant. They do not change
+with time. Atoms have no memory of their state, so the probability that they undergo decay doesn't
+change as time passes. Lets say our atom with a one in ten chance to decay each second has, by some
+miracle, survived for a whole hour without decaying. While the probability that this atom lasted
+that long is extremely slim, it still has a one in ten chance to decay in the coming second. Nuclear
+decay is a purely stochastic process, you can think of unstable isotopes as constantly rolling a
+many-sided dice to determine whether or not they will decay.
+
+If you are familiar with a little bit of statistics, it has probably already dawned on you that the
+rules we have laid out here for radioactive decay describe a Poisson process. As such, for a large
+collection of isotopes, the Poisson distribution can be used to model the number of decay events
+which can be expected to occur as a function of time.
+
+As is the case of any Poisson process, if the number of participants in the process grows large
+enough, we can use exponential decay to model how the participants change state over time. So
+if we have a collection of an isotope with an initial population of N_0, the population N(t)
+evolves over time through the following exponential decay relationship. This is the solution
+to the following differential equation which governs how isotope populations change over time
+due to decay. dN/dt = -lambda N(t).
+
+Now, lets talk about the concept of a half life, which is definitely more widely known than that
+of decay constants. Put simply, an isotope's half life is the amount of time it is expected to take
+for a large collection of that isotope to fall in population to half of its original value. We
+represent half life with the symbol t_1/2. The half life is directly related to the decay constant
+through the following relationship, where the half life is equal to the natural logarithm of 2
+divided by lambda.
+
+To give a little bit of visual intuition here, let's draw a quick plot. On the y axis, we will have
+the relative population of a sample of an unstable isotope. On the x axis, we will have time, and we
+will put it in terms of the decay constant. Now from earlier, we know that the mean lifetime is equal
+to one over the decay constant, so we can write the x-axis labels in terms of tau.
+
+As we plot the curve that describes the population over time, we get the familiar shape of exponential
+decay. Now the first thing I want to make clear is that the mean lifetime of an isotope is not equal
+to its half life. At time 1 tau, the population hasn't been reduced by a factor of 2, but rather by a
+factor of e as tau is the mean of this exponential distribution. At t equals 2 tau, the population has
+reduced by a factor of e squared. And at t equals 3 tau, a factor of e cubed.
+
+The half life is analogous to the median of this distribution, so after one half life we are left
+with half of the original population, after two half lives just a quarter remains. And after three
+half lives just one eighth.
+
+A good rule of thumb to remember is that for every ten half lives that pass, the population of a
+radioactive isotope will decrease by a factor of 1000. For small releases of radioactivity during,
+say, an experiment in a lab. This rule of thumb can be used to quickly come up with an estimate
+for when the affected area will be safe to clean.
+
+Now let's move on from decay constants and half lives and talk about activity. Put simply, activity
+is the rate at which radioactive decays are happening at some point in time. We can conceptualize
+this as follows. Anytime the population of an isotope changes, a radioactive decay must have occured.
+So for a collection of isotopes undergoing decay, activity - the rate at which decays are occuring,
+is equal to the rate at which that population of isotopes is changing.
+
+We can get an expression for reactivity as follows. dN/dt will be equal to negative lambda times N(t).
+Therefore, activity is just lambda times N(t). The faster the population decreases, the higher activity
+will be. If we sub in our expression for N(t) from earlier, we arrive at the following expression for
+the activity of a single isotope decaying away. A(t)=lambda N_0 e^(-lambda t).
+
+So for a sample of an unstable isotope, activity is directly proportional to the sample's population.
+This makes sense conceptually because we would expect a larger collection of radioactive atoms to be
+more, well, radioactive! Activity also grows with the decay constant, which makes sense as a larger
+decay constant means that an collection of isotopes will decay away at a higher rate.
+
+Before we move on from talking about activity, I want to quickly introduce a couple of units that we
+use to describe it. As we have established, activity at its core is just a quantity which describes
+a rate of decay, with dimensionality of inverse time. Because the magnitudes of activities we
+encounter in the wild span many orders of magnitude, there are two commonly used units that we put
+activity in terms of.
+
+These units are the becquerel and the curie. The becquerel is the most basic unit of activity, named
+for French physicist Antoine Henri Becquerel, who discovered radioactivity in conjunction with the
+legendary Polish physicist and chemist Marie Curie. It is equal to one decay per second, simple as
+that. So a sample of material with an activity of 1000 becquerels will have within it 1000 decays
+occuring every second. In the grand scheme of things, a Bq is an extremely small unit to have much
+use in the context of any real world problems, the miniscule amount of Americium-241 in household
+smoke detectors has an activity of about 37,000 Bq. So we frequently discuss activities in terms of the
+units SI multiples, kBq, MBq, GBq, and so on.
+
+We frequently describe larger activities in terms of curies, named, of course, after Marie Curie.
+One curie is equal to 3.7e10 Bq, or 37 billion decays per second. This is roughly the activity of
+one gram of radium. Modern measurements put the actual specific activity of radium-226 closer to
+3.66e10 Bq/g, but by the time this was discovered, the unit had already been defined.
+
+Before we move onto solving decay equations, I want to quickly talk about branching ratios. Many
+isotopes are capable of undergoing more than one mode of decay. These different decay modes can and
+will occur at different rates, and so they have different decay constants. Just as an example, any
+isotope that can undergo beta plus decay can also decay through electron capture. And in heavier
+isotopes, electron capture often occurs at a greater rate than beta plus decay.
+
+The overall decay constant can be calculated as the sum of the individual decay constants which
+correspond to each unique decay mode. If we divide both sides of this equation by the overall
+decay constant, we get an the following expression. Each of the terms on the right hand side is
+the "branching ratio" for a different mode of decay, which we represent with the letter f. A
+branching ratio is just the probability that a decay will be of a specific type. As we can see,
+the branching ratios must sum to one.
+
+Now, we can finally start to solve some decay equations. Because we are primarily interested in
+seeing how populations of radionuclides change over time, and because the rate at which these
+populations change is related to the size of the populations themselves, we are going to need
+to solve some differential equations. In this video, we won't need to use anything more advanced
+than integrating factors, so don't be worried if you aren't super familiar with the techniques
+used in this branch of mathematics.
+
+The simplest example we can come up with here is a case where one isotope decays into another.
+We will call the first isotope "X_1" and the second isotope "X_2", and X_1 has a decay constant
+of lambda_1. We start by setting up the differential equations that describe the population of
+these two isotopes. For X_1, dN_1/dt = -lambda_1 N_1(t). We do a little rearranging. We can solve
+this first order linear ordinary differential equation with the help of an integrating factor,
+which in this case is equal to e^lambda_1*t. We do a little calculus, and then solve for N_1(t).
+Our final expression is N_1(t) = N_1(0)e^-lambda_1*t, classic exponential decay.
+
+For X_2 we can also set up a differential equation. The change in the population of X_2 will have
+two components. The population of X_2 will grow as X_1 decays away, and shrink as X_2 decays away,
+so dN_2/dt will equal lambda_1*N_1(t)-lambda_2*N_2(t). Now in this example, X_2 is a stable isotope,
+and it won't undergo decay, so lambda_2 equals zero. Now we have already solved for N_1(t), so we
+substitute that in. And them we just integrate both sides with respect to time from - to t to get
+our final result, after a little bit of rearranging. N_2(t) = N_2(0) + N_1(0)(1-e^-lambda_1*t).
+The first term, N_2(0), is just the initial population of X_2. The second term represents the new
+X_2 atoms that result from the decay of X_1.
+
+Lets plot these populations and mess around with the parameters a bit to get some intuition here.
+On the x-axis will be time, and on the right axis will be the number of each istope. Keep in mind
+that the equations here are continuous functions, but decays occur discretely. So for small numbers
+of isotopes (like 10), these curves will not be accurate, they should really look like a staircase.
+For nearly all applications in nuclear engineering, the number of particles is so high that a
+continuous function is acceptable. So you can imagine the y-axis as being in terms of moles.
+
+The parameters available for us to perturb are X_1's decay constant and the initial populations of
+the two istotopes. If we increase the decay constant, X_1 decays away faster, and X_2 builds up
+quicker in turn. If we increase the initial amount of X_1, we can see that the final amount of X_2
+that we end up with grows as well. Finally, if we increase the initial amount of X_2, there is no
+impact on X_1.
+
+Another interesting case we can solve for is the case where an unstable isotope is being produced
+by some outside process. This could be something like the constant production of radioactive isotopes
+within a cyclotron. The differential equation which describes this scenario is as follows. The change
+in the population of X_1 is equal to -lambda_1*N_1(t) plus Q(t), so the first term on the righthand
+side of the equation describes the decay of the X_1, and Q(t) is some arbitrary function which
+describes the production of X_1 over time.
+
+Now if we get the production term by itself on the right hand side of the equation, we end up with
+something very similar to the decay equation we solved just a minute ago. Out integrating factor
+is the same, at e^lambda_1*t, and if we multiple it into both sides and factor the lefthand side,
+we get the following relationship. From here, its just a matter of integrating both sides from 0
+to t. And then we solve for N_1(t). So this is our general formula which describes the population of
+an undtable isotope which is also being produced by some outside process, and it's is valid for any
+arbitrary production function. We still have an integral in the righthand side, so let's solve it
+for the case where we are producing the isotope at a constant rate.
+
+This is a pretty trivial integral to solve, and after a little bit of rearranging, we find that
+N_1(t) = N_1(0)*e^(-lambda_1*t) + Q/\lambda_1 * (1 - e^(-lambda_1 t)). Notice that is the rate of
+production was equal to zero, we would have the expression for an isotope decaying in isolation as
+expected, so the first term represents the initial isotope population decaying away over time. The
+second term represents the portion of X_1's population that is attributable to the outside production
+as it builds up and decays away.
+
+Now just like the last example, we will plot X_1's population and mess around with some of the
+parameters to see how things shake out. Initally, we will set Q to zero, and you see that we get Our
+familiar exponential decay curve. Adjusting lambda changes the rate of decay, as expected, and adjusting
+N_1(0) changes the inital population like it did before. But when we change Q to be nonzero, we get
+some interesting behavior.
+
+Now that Q is positive and we are producing the isotope, we can see that the population doesn't approach
+zero as time goes on, it approaches some other value. If we set t to infinity in the governing equation,
+we can derive that this value is equal to Q/lambda_1. When the population of X_1 is equal to this, the
+rate of X_1's decay will perfectly match the rate at which it is being produced. So we can say that as
+t goes to infinity, X_1's activity will approach Q. This state, where the amount of an isotope remains
+constant because it production and decay rates are equal is called "secular equilibrium".
+
+The population will always approach the production rate over the decay constant, regardless of what values
+we set our parameters to. So the magnitude of the inital population just determines whether or not we
+approach Q/lambda from above or below. And the equilibrium population of our isotope is set by the magnitudes
+of its production rate and decay constant.
+
+Now that we have solved for some of these simple decay equations, lets move on and try and to get some
+solutions to some more complicated setups.
+
+When radioactive isotopes decay in the real world, there are often a great many steps that an unstable isotope
+will make its way through in its journey to become stable. And along the way, there are often several different
+pathways that can be taken with varying probablities. If you watched my first video on nuclear decay, you may
+remember the decay chain that we walked through for Thorium-232. There were 10 decays that it needed to undergo
+before it became Lead-208, and that was just the most likely path it could take. So the systems of differential
+equations which govern real world decay can get pretty big, and that leads to a lot of complexity when we try
+and solve them with the techniques we have used so far.
+
+Just to give you a little taste of how bad things can get, I'll show you the equations that govern a two step
+decay equation, where X_1 decays into X_2, which then decays into a stable X_3. So the system of differential
+equations that governs this is as follows. The change in X_1's population is just -labmda_1*N_1(t). The amount
+of X_2 grows with the decay of X_1 and decreases as X_2 decays, so dN_2/dt=lambda_1*N_1(t)-lambda_2*N_2(t), and
+the amount of X_3 builds up with the decay of X_2, so dN_3/dt=lambda_2*N_2(t).
+
+We already solved for the case of N_1(t), its just exponential decay. For N_2(t), the solution gets a little more
+involved, as unlike the two-step decay chain from earlier, X_2 isn't stable here and will undergo decay with time.
+We can still solve it with the help of an integrating factor though, and after a little calculus an algebra, we
+get this slightly uglier expression. Feel free to pause the video here if you want to step through the derivation
+yourself. The first term represents the original population of X_2 that decays away with time, and the second term
+represents the population of X_2 resulting from the decay of X_1 which builds up and eventually decays away.
+
+Now while the differential equation for N_3(t) looks nicer, solving it is actually even more tedious, so I won't talk
+thorugh the math here, but its just using another application of an integrating factor to get to a solution. And you
+can see that it is getting pretty messy here. But the first term is just the initial amount of X_3, which is stable
+and doesn't decay away. The second term is the inital amount of X_2 that decays into N_3, and the final big term on
+the second line is the initial amonut of X_1, which decays into X_2 and then X_3.
+
+If we plot the populations of the three isotopes, we see that X_1 decays away, as expected. X_2 has a more complicated
+behavior, as it will build up in the system as X_1 decays away, but then it must itself decay into X_3, which builds
+up as t goes to infinity.
+
+Changing the inital amount of X_1 alters the total amount of isotopes in the system which need to pass thorugh all three
+states, so all three curves scale accordingly. Changing the inital amount of X_2 has no bearing on N_1(t), but it does
+have downstream effects for the population of X_3 as a function of time. And changing the inital amount of X_3 just shifts
+its curve alone, since it is stable.
+
+All three curves are sensitive to the value of lambda_1, since it controls the rate at which X_1 decays into X_2, and thus
+impacts the amount of X_2 available to decay into X_3 at all points in time. Changing lambda_2 doesn't impact N_1(t) at all,
+but it does impact how quickly X_2 decays into X_3.
+
+Something interesting happens if X_2 is much more unstable than X_1, which is to say, lambda_2 is much larger than lambda_1.
+Here, we basically have a situation where the instant an atom of X_1 decays into X_2, that X_2 atom decays into X_3. This
+means that we never really build up an appreciable population of X_2 in the system, it decays away too quickly. And the result
+is that the curves for N_1(t) and N_3(t) effectively resemble those for the single-step decay chain we solved for earlier, it's
+as if X_2 isn't even there.
+
+In this case, if we plot the activities for X_1 and X_2 as a function of time (remember that activity just means the rate of
+decay), we see that the activity for X_2 quickly jumps up to that of X_1 and follows it more or less exactly. This is a function
+of the fact that because the decay constant of X_2 is much larger than that of X_1, we basically get an X_2 decay the instant
+we have an X_1 decay. This state, where the activity of a daughter isotope matches the activity of its parent due to a difference
+in their decay constants is called "transient equilibrium". If lambda_2 is closer to lambda_1, the decays do not occur in lock
+step, so a population of X_2 can build up resulting in a mismatch of their activities.
+
+These equations that we have been solving have a special name, they are bateman equations. They take on this familiar form,
+where the value of each the functions increases as its parent function shrinks and decreases proportional to its own value.
+For the special case where the initial populations of all isotopes except X_1 are zero, we can get a general solution to
+the Bateman equations of this unsightly form. In practice, its really only worth going through the process of getting an
+analytical solution to these equations for the cases we have analyzed today. Once things get more complicated than that, its
+worth using some other mathematical techniques to get to a solution.
+
+I'll close things out for this video by talking about the matrix exponential method, which we can use to solve more complicated
+decay chains with the help of a computer. We have just seen just how nasty things get with a simple two-step decay chain, so you
+can imagine how bad things would be if we added more steps, or allowed some isotopes to undergo different decay modes resulting
+in forks in our decay chain. Just solving for a simple three step decay chain takes a couple pages of calculus and algebra.
+
+The matrix exponential method works as follows. We start by writing out our bateman equations for the decay chain we are interested
+in, and just to make things easy, we will do this for our two-step decay chain. So here are our bateman equations, they look the same
+as before. And what we can do is write out all of the "hidden terms" here, where we will explicitly add terms to our equations which
+mathematically link isotopes that actually have no bearing on each other. So for instance, the population of X_1 is in no way
+dependent on the population of X_3, since it is downstream of it in the decay chain, but we can still write out a term that links X_1
+to X_3, so long as the coefficient on N_3(t) is zero.
+
+After writing out these expanded bateman equations, it becomes pretty clear that we can write this system of differential equations
+in matrix form. Here, each row in the big matrix of coefficients corresponds to an equation for an individual isotope, and each column
+sums to zero since the total population of isotopes doesn't change.
+
+We can write this a little more succinctly as follows. Little n(t) will represent the vector of isotope populations, so the lefthand side
+is just dn/dt. The matrix of decay constants we will write as big lambda, and the final vector is just n(t). The solution to this
+differential equation of matrices will be as follows, where n(t) will be the matrix exponential of big lambda times t times the vector of
+initial isotope populations.
+
+Now the matrix exponential is something that we can solve with a computer through the following process. Recall that we can take the Taylor
+expansion of e^x about x=0 as follows, it's equal to 1 + x + x^2/2! + x^3/3!, and so on. Well a similar expansion can be written for
+e^Lanbda*t as follows, its the identity matrix with the same dimensions as lambda + Lambda*t + 1/2!*Lambda^2t^2 + 1/3!*Lambda^3t^3 and so on,
+with the identity matrix just being a square matrix with ones on the diagonal and zeros in all other positions. This expansion would be a
+nightmare to calculate by hand to any degree of accuracy, even for a trivial problem like this two step decay chain, but computers are
+perfectly slated for this task. The solution to e^Lambda*t will give us a matrix of coefficients that, when multiplied with the vector of
+initial isotope populations, will give us solutions for the populations of our isotopes in the decay chain.
+
+So lets do an example for a more complicated decay chain. This is actually a problem that I had to solve in my first nuclear engineering
+course that I took as an undergrad. Here is our decay chain, there are eight isotopes in total. X_1 decays into X_2 85% of the time, and
+into X_3 15% of the time. X_2 decays into the stable X_4 40% of the time, and into the X_5 60% of the time. X_3 decays into X_5. X_5 decays
+into X_6 and X_7 with branching ratios of 0.25 and 0.75, respectively. X_6 decays into X_7, and X_7 decays into the stable X_8.
+
+The decay constants we will use are as follows, note that for X_4 and X_8 they are equal to zero, since they are stable and don't decay
+into anything else. Here are the differential equations which describe this decay scheme, you can imagine that solving these analytically
+would be a pretty ridiculous thing to do, so lets put this system of equations in matrix form.

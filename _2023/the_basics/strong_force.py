@@ -164,7 +164,6 @@ class CoulombAnimation(Scene):
         label.next_to(brace, UP)
         label_bkg = Rectangle(color=YELLOW, fill_color=BLACK, height=label.get_height() * 1.7, fill_opacity=1.0, width=label.get_width() * 1.2)
         label_bkg.move_to(label.get_center())
-        # always(self.bring_to_front, label)
         number.add_updater(lambda m: m.set_value((proton2.get_x() - proton1.get_x()) / 4.5))
         self.play(
             FadeIn(brace),
