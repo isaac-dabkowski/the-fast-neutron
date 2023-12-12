@@ -4,13 +4,29 @@ import os
 import subprocess
 import argparse
 
-from _2023.nuclear_decay_pt2 import video_intro
+from _2023.nuclear_decay_pt2 import video_intro, half_life, activity, branching, decay_chains
 # from _2023.nuclear_decay_pt2 import video_outro
 
 OUTPUT_DIRECTORY = r"C:\Users\isaac\Documents\TheFastNeutron\videos\3_nuclear_decay_pt2\scenes"
 SCENES_IN_ORDER = [
     # ("video_intro", "TitleCard"),
     # ("video_intro", "TableOfContents"),
+    # ("half_life", "HalfLifeTitleCard"),
+    # ("half_life", "DecayConstant"),
+    # ("half_life", "HalfLife"),
+    # ("activity", "ActivityTitleCard"),
+    # ("activity", "Activity"),
+    # ("activity", "ActivityUnits"),
+    # ("branching", "BRCard"),
+    # ("branching", "BR"),
+    ("solve_decay_eq", "SolvingDecayEquationsTitleCard"),
+    ("solve_decay_eq", "SolvingDecayEquations"),
+    ("solve_decay_eq", "SolvingDecayEquationsWithProduction"),
+    ("decay_chains", "DecayChainsTitleCard"),
+    ("decay_chains", "SolvingDecayChains"),
+    ("decay_chains", "BatemanEquations"),
+    ("decay_chains", "MatrixExponential"),
+    ("decay_chains", "SolveMatrixExponential"),
     # ("video_outro", "OutroCard")
 ]
 

@@ -90,14 +90,14 @@ this as follows. Anytime the population of an isotope changes, a radioactive dec
 So for a collection of isotopes undergoing decay, activity - the rate at which decays are occuring,
 is equal to the rate at which that population of isotopes is changing.
 
-We can get an expression for reactivity as follows. dN/dt will be equal to negative lambda times N(t).
+We can get an expression for  activity as follows. dN/dt will be equal to negative lambda times N(t).
 Therefore, activity is just lambda times N(t). The faster the population decreases, the higher activity
 will be. If we sub in our expression for N(t) from earlier, we arrive at the following expression for
 the activity of a single isotope decaying away. A(t)=lambda N_0 e^(-lambda t).
 
 So for a sample of an unstable isotope, activity is directly proportional to the sample's population.
 This makes sense conceptually because we would expect a larger collection of radioactive atoms to be
-more, well, radioactive! Activity also grows with the decay constant, which makes sense as a larger
+more, radioactive! Activity also grows with the decay constant, which makes sense as a larger
 decay constant means that an collection of isotopes will decay away at a higher rate.
 
 Before we move on from talking about activity, I want to quickly introduce a couple of units that we
@@ -113,7 +113,7 @@ that. So a sample of material with an activity of 1000 becquerels will have with
 occuring every second. In the grand scheme of things, a Bq is an extremely small unit to have much
 use in the context of any real world problems, the miniscule amount of Americium-241 in household
 smoke detectors has an activity of about 37,000 Bq. So we frequently discuss activities in terms of the
-units SI multiples, kBq, MBq, GBq, and so on.
+unit' s SI multiples, kBq, MBq, GBq, and so on.
 
 We frequently describe larger activities in terms of curies, named, of course, after Marie Curie.
 One curie is equal to 3.7e10 Bq, or 37 billion decays per second. This is roughly the activity of
@@ -178,8 +178,8 @@ side of the equation describes the decay of the X_1, and Q(t) is some arbitrary 
 describes the production of X_1 over time.
 
 Now if we get the production term by itself on the right hand side of the equation, we end up with
-something very similar to the decay equation we solved just a minute ago. Out integrating factor
-is the same, at e^lambda_1*t, and if we multiple it into both sides and factor the lefthand side,
+something very similar to the decay equation we solved just a minute ago. Our integrating factor
+is the same, e^lambda_1*t, and if we multiple it into both sides and factor the lefthand side,
 we get the following relationship. From here, its just a matter of integrating both sides from 0
 to t. And then we solve for N_1(t). So this is our general formula which describes the population of
 an undtable isotope which is also being produced by some outside process, and it's is valid for any
@@ -187,7 +187,7 @@ arbitrary production function. We still have an integral in the righthand side, 
 for the case where we are producing the isotope at a constant rate.
 
 This is a pretty trivial integral to solve, and after a little bit of rearranging, we find that
-N_1(t) = N_1(0)*e^(-lambda_1*t) + Q/\lambda_1 * (1 - e^(-lambda_1 t)). Notice that is the rate of
+N_1(t) = N_1(0)*e^(-lambda_1*t) + Q \lambda_1 * (1 - e^(-lambda_1 t)). Notice that is the rate of
 production was equal to zero, we would have the expression for an isotope decaying in isolation as
 expected, so the first term represents the initial isotope population decaying away over time. The
 second term represents the portion of X_1's population that is attributable to the outside production
@@ -293,7 +293,7 @@ sums to zero since the total population of isotopes doesn't change.
 We can write this a little more succinctly as follows. Little n(t) will represent the vector of isotope populations, so the lefthand side
 is just dn/dt. The matrix of decay constants we will write as big lambda, and the final vector is just n(t). The solution to this
 differential equation of matrices will be as follows, where n(t) will be the matrix exponential of big lambda times t times the vector of
-initial isotope populations.
+the initial isotope populations.
 
 Now the matrix exponential is something that we can solve with a computer through the following process. Recall that we can take the Taylor
 expansion of e^x about x=0 as follows, it's equal to 1 + x + x^2/2! + x^3/3!, and so on. Well a similar expansion can be written for
@@ -310,4 +310,21 @@ into X_6 and X_7 with branching ratios of 0.25 and 0.75, respectively. X_6 decay
 
 The decay constants we will use are as follows, note that for X_4 and X_8 they are equal to zero, since they are stable and don't decay
 into anything else. Here are the differential equations which describe this decay scheme, you can imagine that solving these analytically
-would be a pretty ridiculous thing to do, so lets put this system of equations in matrix form.
+would be a pretty ridiculous thing to do, so lets put this system of equations in matrix form. To solve this though, all it will take is
+a few lines of code. Here's all you need in Python to create a funciton to solve any decay equation in matrix form at some point in time.
+
+After running this code, we can plot the activities of our different isotopes as a function of time. For our initial condition, I picked
+the case where we only have isotope X_1, and its population is set so that its initial activity is one Curie. We will do this on a log-log
+plot since the number we are working with get pretty big. We see that X_1 decays away with time, this leads to a buildup of X_2, which also
+decays away. After an intiial buildup period, we actually get a period of relative secular equilibrium with X_3, as its production roughly
+equals its decay up until around 10^5 seconds. X_4 is stable, so it just builds up over time. X_5 has two production modes, so we get this
+double-bump shape in its plot as X_2 and X_3 decay into it at different rates. X_6 and X_7 build up as X_5 decays, and then they too vanish
+with time. And finally X_8, which is stable, builds up in the system.
+
+If we instead plot the activities, we get a similar looking plot, but all of the curves of course go to zero with time. Towards the end of the
+sample's life, though, we can see that X_6 and X_7 are effectively in transient equilibrium with one another and decay at almost the same rate, as
+the decay constants for X_7 is much larger than that of X_6.
+
+And that's all I've got on the math behind radioactive decay, thanks for watching! I hope you have feel more comfortable with the concepts of
+activity, branching ratios, half-lives, and the mathematical techniques we use to solve decay chains. I haven't decided what topic to make the
+next video on, but I hope to see you there!
