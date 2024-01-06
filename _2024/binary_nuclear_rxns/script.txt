@@ -1,0 +1,156 @@
+Welcome back to The Fast Neutron! Today's video is going to be a shorter one, we are going
+to be introducing binary nuclear reactions. We are coming off the back end of a two part
+series on nuclear decay, if you haven't seen those videos, I would recommend you check them
+out. They definitely aren't necessary viewing to understand what we are going to talk about
+today, but as we work our way through the basics of nuclear science and engineering, the
+concept of nuclear decay will definitely come up a few more times.
+
+The reason I want to introduce binary nuclear reactions today is that some of the formulas
+which describe neutron scattering have their basis in the equations we will come up with
+today, and neutron scattering is one of the most important phenomena in all of nuclear
+engineering.
+
+To start things off, we will begin by introducing what a binary nuclear reaction actually is.
+From there, we will see that there are a couple of energetic thresholds associated with binary
+nuclear reactions, the first of which is the kinematic threshold, and the other of which is the
+Coulombic threshold. Alright, without further ado, let's get into binary nuclear reactions.
+ 
+All across the subatomic world, particles are undergoing collisions. Particles can interact to
+produce multiple reaction products through a variety of different modes, but today we are going
+to talk through the mechanics of a specific family of reactions which is incredibly important,
+binary nuclear reactions.
+
+Put simply, a binary nuclear reaction is any interaction between two nuclei which produces one
+or more reaction products. Today, we will specifically be focusing on the case where there are
+exactly two reaction products. Crucially, we will assume that all participants in these reactions
+are non-relativistic, so the calculations we will due will be more or less entirely classical.
+
+If we write out the general equation which descrives binary nuclear reactions, we get the following.
+Little x we call the "projectile", big X is the "target", and when it comes to the products, we get
+big Y and little Y, which are the heavy and light products.
+
+Now because we are only going to be discussing non-relativistic reactions in this video, the kinetic
+energy of the projectile will generally be on the order of a few MeV or less. When this is the case,
+reactions actually support the brief creation of a short-lived excited "compound" nucleus, which quickly
+spits out the reaction products. Because this compound nucleus is doesn't last very long at all, we
+typically leave it out of our expressions.
+
+Something interesting about these nuclear processes is that the compound nucleus has no "memory" of
+how it came to be. And a result of this is that it will spit out the same daughter products regardless
+of what projectile and target actually created it, for a given amount of total energy.
+
+Just as a quick refresher, there is a shorthand we can use to write out these sorts of nuclear
+reactions, we often write reactions out using parentheses, where the projectile and the light
+product is on the inside, and the target and the heavy product are on the outside.
+
+Now that we have an understanding of what these reactions acutally are, lets see if we can get some
+intuition as to the energies that the products can carry away. Since we are at the scale of individual
+nuclei, nucleons, and particles, quantum mechanics comes into play here. A consequence of that is that
+the outgoing angles of the reaction products are fundamentally random. Binary nuclear reactions still
+need to satisfy conservation of energy and momentum, though, so while we can't use classical mechanics
+to tell what angle the reaction products will leave with, we can predict the energies that they will
+have - given some angle. Lets analyze a binary nuclear reaciton with conservation of energy and
+momentum, then.
+
+So here we have our archetypal binary nuclear reaction, and we will label the angle between the light
+product's path and the path of the projectile as theta. Each of the reaction participants will have
+its own mass associated with it, which we will denote with m sub little or big X or Y.
+Conservation of energy maintains that the energy of the reaction precursors must equal the energy of
+the products, and if we set up the reaction such that the target is at rest in our frame of reference,
+we get the expression E_x = E_y + E_Y + Q. Q is the Q value of the reaction, which we discussed at
+length in a past video, and it captures the release or consumption of energy by the reaction.
+
+The expression for conservation of momentum is a little more complicated, but if the target is at rest
+in our reference frame, we can say with certainty that through conservation of linear momentum, if the
+projectile is traveling in the positive x direction, the sum of the x-components of the reaction products'
+momenta must equal the projectile's momentum. So we can set up a nice little diagram like so to illustrate
+this, and using the law of cosines on this triangle provides the following expression.
+
+Now with these two formulas, we can get an equation which solves for the outgoing energy of the light
+product as a function of its outgoing angle. The square root of the outgoing energy is this A term plus
+or minus the square root of A squared plus B. The A and B terms are functions of the particle masses, the
+projectile energy, the light product's outgoing angle, and the Q value.
+
+With this formula in our toolbox, lets analyze a couple of potential outcomes of a binary nuclear reaction
+in terms of the light product's energy.
+
+First, lets consider the case where we have an exothermic reaction, which means that there is energy being
+released by our nuclear process and the Q value is positive. By inspection, we can see that the A term has to be
+positive. If Q is positive, B also has to be positive, since the heavy product must be heavier than the projectile.
+Because of this, the term with the square root must be larger than A. So if we were to evaluate our expression
+for E sub little y with a minus sign, we would get that the right hand side of the equation is negative.
+This indicates that there is only one allowable energy for the light product, and that is the result of evaluating
+our expression with a plus sign. For the case where the projectile is coming in with very little energy, we find
+that the energy of the light product is simply the mass of the heavy product divided by the sum of the product
+masses, all times Q.
+
+Notice that this is the same exact expression we got for the energy of an alpha particle following alpha decay!
+This makes sense, as a binary nuclear reaction with a target energy of close to zero is analogous to a decay 
+event where an unstable atom spits out a reaction product. This is pure kinematics at work.
+
+Now lets consider the case where we have an endothermic reaction, where we actually need to put energy in in order
+to get the reation to occur. Here, it is possible that B is either positive or negative, depending on the magnitude
+of Q and the projectile's energy. Because of this, it is then possible for the term under the radical - a^2+b, to be
+negative. This indicates a threshold energy for the projectile, below which the reaction cannot take place.
+
+If we meet this threshold energy, A plus the square root of a^2+b will be positive, signifying a solution to our equation.
+And should the projectile's energy be large enough, it is also possible for A minus the square root of a^2+b to be positive.
+This means that for endothermic reactions, there can actually be two possible outgoing energies for the light product,
+provided that this energetic threshold is met.
+
+This threshold that we have been dicussing has a name, the kinematic threshold. It is the minimum amount of projectile
+energy needed to physically cause a nuclear reaction to occur. For exothermic reactions, this threshold is equal to
+zero. After all, an exothermic reaction will release energy - the products will have lower rest mass energies than the
+precursors and it is energetically prefereable for it to occur. For endothermic reactions, we need to put in energy
+to get the reaction to occur.
+
+We can calculate the magnitude of the kinematic threshold for an endothermic reaction by seeing what projectile energy
+will just make it so that a^2+b is positive (or rather, equal to zero). I won't talk through the algebra to solve for
+this in detail, but I'll quickly show it on the screen. We just plug in our definitions for A and B, and set theta to
+zero, since that is when the threshold energy will be the lowest.
+
+So then there is just a whole bunch of algebra... and a lot more algebra... and we arrive at the following expression.
+Now for reactions where the Q value is small relative to the rest mass energies of the reaction participants, the
+numerator here (which is the sum of the product masses) is approximately equal to the sum of the precursor masses, and
+the denominator is the masses of the products minus the projectile mass, which is approximately equal to the target mass.
+So the kinematic threshold can be approximated as the negative of the Q value times the quantity of one plus the ratio
+of the projectile mass to the target mass.
+
+There exists another threshold that needs to be overcome for a reaction to take place. Imagine a situation where a proton
+is our projectile, and our target is a nucleus. Because both of our reaction participants are positively charged, they will
+exert a repulsive electrostatic force upon one another. This acts as a barrier to the reaction taking place, and if the
+proton's kinetic energy is very low, it will simply be repelled away - even if the reaction it was going to cause has a
+positive Q value. To actually get this reaction to occur, the proton needs enough energy to overcome the "Coulomb threshold".
+
+The magnitude of this threshold is equal to the electrostatic potential energy repelling the two reaction participants. Let's
+write out an equation for the potential energy when the particles are just touching one another. We will symbolize this energy
+with the letter V. The potential energy is equal to one over 4 Pi Epsilon naught, thats just the coulomb constant, times the
+charges of the two particles multiplied together, which we can express as Z little x times E, times Z big X times E (where E
+is the elementary charge), all over the distance between the two particles.
+
+The distance between the particles is just the sum of their radii, assuming that they are just barely touching. In femtometers,
+this is approximately equal to 1.2 times the sum of the cube roots of their mass numbers. If you remember back to the first
+video I made on this channel, the liquid drop model holds that the radius of a nucleus grows with the cube root of the mass number.
+
+If the projectile has at least this much kinetic energy, it will be able to overcome electrostatic repulsion and get close enough
+to the target that the reaction may be able to occur, provided that the kinematic threshold is also overcome. One thing to note here
+is that the energy which is passed to the electrostatic field is not lost, if the reaction occurs we get that energy back through
+conservation of energy.
+
+The overall threshold for a nuclear reaction to occur is just the maximum of these two thresholds. To close things out, lets do a
+quick example to calculate the threshold energy for a real nuclear reaction.
+
+Lets take an alpha particle and fire it at an atom of chlorine-35. Once this particular reaction is finished, we will get an atom of
+potassium-38 and a neutron. First, we will calculate the kinematic threshold.
+
+This reaciton has a Q value of -5.86 MeV, meaning it is endothermic and the kinematic threshold will be positive. We plug in the masses
+of our reaction participants into the expression we derived earlier to find that the kinematic threshold is 6.49 MeV. So we will need an
+alpha particle with at least this much energy to get things going.
+
+Now we calculate the Coulomb threshold. Both the alpha particle and the chlorine nucleus have a positive charge, so there will be a nonzero
+value for the columnb threshold. We plug in our charges to our equation, and our crude formula here returns a value of 8.40 MeV. The overall
+threshold energy is therefore the maximum of the two thresholds, which is this case is the coulomb threshold of 8.40 MeV.
+
+Thanks for watching! In the next video, we are going to be working through analyzing a reaction that is particularly important to
+nuclear reactors, neutron scattering. Hope to see you there!
+
