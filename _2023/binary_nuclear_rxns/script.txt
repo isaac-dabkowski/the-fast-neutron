@@ -68,5 +68,22 @@ this, and using the law of cosines on this triangle provides the following expre
 
 Now with these two formulas, we can get an equation which solves for the outgoing energy of the light
 product as a function of its outgoing angle. The square root of the outgoing energy is this A term plus
-or minus the square root of A squared plus B. The A and B terms are funciton of the particle masses, the
+or minus the square root of A squared plus B. The A and B terms are functions of the particle masses, the
 projectile energy, the light product's outgoing angle, and the Q value.
+
+With this formula in our toolbox, lets analyze a couple of potential outcomes of a binary nuclear reaction
+in terms of the light product's energy.
+
+First, lets consider the case where we have an exothermic reaction, which means that there is energy being
+released by our nuclear process and the Q value is positive. By inspection, we can see that the A term has to be
+positive. If Q is positive, B also has to be positive, since the heavy product must be heavier than the projectile.
+Because of this, the term with the square root must be larger than A. So if we were to evaluate our expression
+for E sub little y with a minus sign, we would get that the right hand side of the equation is negative.
+This indicates that there is only one allowable energy for the light product, and that is the result of evaluating
+our expression with a plus sign. For the case where the projectile is coming in with very little energy, we find
+that the energy of the light product is simply the mass of the heavy product divided by the sum of the product
+masses, all times Q.
+
+Notice that this is the same exact expression we got for the energy of an alpha particle following alpha decay!
+This makes sense, as a binary nuclear reaction with a target energy of close to zero is analogous to a decay 
+event where an unstable atom spits out a reaction product. This is pure kinematics at work.

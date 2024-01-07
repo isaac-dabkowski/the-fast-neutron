@@ -308,3 +308,72 @@ class ConservationEqns(Scene):
             Write(aeq),
             Write(beq)
         )
+        self.play(*[FadeOut(mob) for mob in self.mobjects])
+        self.wait()
+
+
+class ExothermicRxns(Scene):
+    def construct(self):
+        ex = Tex(r"$\underline{\text{Exothermic reactions (Q} > \text{0)}}$").to_edge(UP).shift(DOWN * 0.25)
+        ey = Tex(r"$\sqrt{E_y}=a\pm\sqrt{a^2+b}$").next_to(ex, DOWN)
+        aeq = Tex(r"$a=\sqrt{\frac{m_xm_XE_x}{\left(m_y+m_Y\right)^2}}\text{cos}\theta$").next_to(ey, DOWN)
+        beq = Tex(r"$b=\frac{m_Y-m_x}{m_y+m_Y}E_x+\frac{m_Y}{m_y+m_Y}Q$").next_to(aeq, DOWN)
+        self.play(
+            Write(ex)
+        )
+        self.wait()
+        self.play(
+            Write(ey),
+            Write(aeq),
+            Write(beq)
+        )
+        self.play(
+            ey.animate.shift(RIGHT * 3.5),
+            aeq.animate.shift(RIGHT * 3.5),
+            beq.animate.shift(RIGHT * 3.5)
+        )
+        self.play(
+            FadeIn(ImageMobject("assets/BNR_diagram.png").scale(1.5).to_corner(UL).shift(DOWN * 1 + RIGHT * 1.5))
+        )
+        self.wait()
+        line = Line(start=[-10, beq.get_y() - 0.5, 0], end=[10, beq.get_y() - 0.5, 0])
+        t1 = MathTex(r"\text{If Q} > 0\text{...}").next_to(ex, DOWN).shift(DOWN * 3)
+        self.play(
+            Create(line)
+        )
+        self.wait()
+        self.play(Write(t1))
+        self.wait()
+        logic = VGroup(
+            VGroup(
+                Tex(r"$a > 0$"),
+                Tex(r"$b > 0 \text{ since } m_Y > m_x$"),
+                Tex(r"$a-\sqrt{a^2+b} < 0$")
+            ).arrange(DOWN, aligned_edge=LEFT).to_edge(LEFT),
+            VGroup(
+                MathTex(r"\text{There is only one possible}\\\text{energy for the light product!}"),
+                Tex(r"$\text{If } E_x \approx 0 \rightarrow E_y = \frac{m_Y}{m_y+m_Y}Q$")
+            ).arrange(DOWN, aligned_edge=LEFT).to_edge(RIGHT)
+        ).next_to(t1, DOWN)
+        self.play(
+            Write(logic[0][0])
+        )
+        self.wait()
+        self.play(
+            Write(logic[0][1])
+        )
+        self.wait()
+        self.play(
+            Write(logic[0][2])
+        )
+        self.wait()
+        self.play(
+            Write(logic[1][0])
+        )
+        self.wait()
+        self.play(
+            Write(logic[1][1])
+        )
+        self.wait()
+        self.play(*[FadeOut(mob) for mob in self.mobjects])
+        self.wait()
