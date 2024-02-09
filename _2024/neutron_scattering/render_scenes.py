@@ -4,20 +4,21 @@ import os
 import subprocess
 import argparse
 
-from _2024.neutron_scattering import video_intro
+from _2024.neutron_scattering.video_intro import TitleCard, TableOfContents
+from _2024.neutron_scattering.scattering import ScatteringTitleCard, ScatteringFormulas, AngleFormula, EnergyDistribution, MinPostScatterE
+from _2024.neutron_scattering.lethargy import Lethargy, ScatterSim
 
 OUTPUT_DIRECTORY = r"C:\Users\isaac\Documents\TheFastNeutron\videos\5_neutron_scattering\scenes"
 SCENES_IN_ORDER = [
     # ("video_intro", "TitleCard"),
     # ("video_intro", "TableOfContents"),
-    # ("binary_rxns", "BNRTitleCard"),
-    ("binary_rxns", "BNR"),
-    # ("binary_rxns", "ConservationEqns"),
-    # ("binary_rxns", "ExothermicRxns"),
-    # ("binary_rxns", "EndothermicRxns"),
-    # ("binary_rxns", "KinematicThreshold"),
-    # ("binary_rxns", "CoulombThreshold")
-    # ("video_outro", "OutroCard")
+    # ("scattering", "ScatteringTitleCard"),
+    # ("scattering", "ScatteringFormulas"),
+    # ("scattering", "AngleFormula"),
+    # ("scattering", "EnergyDistribution"),
+    ("scattering", "MinPostScatterE"),
+    # ("lethargy", "Lethargy"),
+    # ("lethargy", "ScatterSim")
 ]
 
 # Argparse to allow for variable quality of render

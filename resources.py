@@ -6,6 +6,7 @@ import numpy as np
 import time
 import json
 import os
+import random
 from copy import deepcopy
 from colormap import hex2rgb, rgb2hex
 from pint import Q_
@@ -15,6 +16,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from typing import List
+
+def log_interp(xx, yy, kind='linear'):
+    logx = np.log10(xx)
+    logy = np.log10(yy)
+    lin_interp = sp.interpolate.interp1d(logx, logy, kind=kind)
+    log_interp1d = lambda zz: np.power(10.0, lin_interp(np.log10(zz)))
+    return log_interp1d
 
 
 def calc_Q_value(parents: list, daughters: list):
@@ -272,6 +280,9 @@ class Isotope():
         """
         return f"{self.element}-{self.mass_number}"
 
+    def __repr__(self) -> str:
+        return f"Isotope({self.element}-{self.mass_number})"
+
     @property
     def _mendeleev_iso(self) -> mendeleev.Isotope:
         """
@@ -380,7 +391,7 @@ class Isotope():
             raise ValueError(f"Incident particle \"{incident_particle}\" is not supported")
 
         # Validate the cross section
-        if cross_section not in ["total", "elastic_scatter", "inelastic_scatter", "fission"]:
+        if cross_section not in ["total", "elastic_scatter", "inelastic_scatter", "fission", "capture"]:
             raise ValueError(f"Cross section reaction ID for \"{cross_section}\" is not known")
 
         # First, check the cross sections JSON file to see if we already have what we are looking for
@@ -461,6 +472,8 @@ class Isotope():
             xs = "3"
         elif cross_section == "fission":
             xs = "18"
+        elif cross_section == "capture":
+            xs = "102"
         driver.find_element(By.XPATH, rxn_field).click()
         rxn_option = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located(
@@ -566,9 +579,9 @@ class Isotope():
             if str(self.mass_number) in xs_data[self.element]:
                 xs_data[self.element][str(self.mass_number)][cross_section] = new_xs_dict[self.element][str(self.mass_number)][cross_section]
             else:
-                xs_data[self.element][str(self.mass_number)] = new_xs_dict[self.element]
+                xs_data[self.element][str(self.mass_number)] = new_xs_dict[self.element][str(self.mass_number)]
         else:
-            xs_data[self.element] = new_xs_dict
+            xs_data.update(new_xs_dict)
         with open(os.path.join(self.get_xs.__globals__["__file__"], "..", "cross_sections.json"), "w") as json_file:
             json.dump(xs_data, json_file, indent = 4) 
 
@@ -650,5 +663,145 @@ class GammaDecay():
         return self.excitation_energy
 
 
-# # Helper function to simulate a binary nuclear reaction
-# # def binary_nuclear_reaction()
+# Helper class for a material, which may be composed of many different atoms
+class Material():
+    def __init__(self, composition: Dict[Isotope, float], fractions: str, density: Q_) -> None:
+        assert fractions in ["wt", "at"], "fraction must be either 'wt' or 'at"
+        self._composition = composition
+        self.fractions = fractions
+        self.density = density
+        self.composition = self._derive_composition()
+        self.atom_densities = self._derive_atom_densities()
+
+    def __repr__(self) -> str:
+        compstr = ""
+        for iso, afrac in self.composition.items():
+            compstr += f"{iso.element}[{afrac.m:.3f}],"
+        return f"Material({compstr[:-1]})"
+
+    def _derive_composition(self) -> Dict[Isotope, float]:
+        """This helper function derives the atomic fractions of the material
+        """
+        if self.fractions == "at":
+            return self._composition
+        else:
+            comp = dict()
+            for iso, wfrac in self._composition.items():
+                comp[iso] = (wfrac / iso.mass) / sum([v / k.mass for k, v in self._composition.items()])
+        return comp
+
+    def _derive_atom_densities(self) -> Dict[Isotope, Q_]:
+        """This helper function derives the atomic densities within the material
+        """
+        unit_density = self.density / self.unit_mass
+        atom_densities = dict()
+        for iso, afrac in self.composition.items():
+            atom_densities[iso] = (unit_density * afrac).to("1 / (barn * cm)")
+        return atom_densities
+
+    @property
+    def unit_mass(self) -> Q_:
+        mass = Q_(0, "amu")
+        for iso, afrac in self.composition.items():
+            mass += iso.mass * afrac
+        return mass
+
+# Helper class to simulate a neutron
+class NSim():
+    def __init__(self, E: Q_, r: List[float]=[0.0, 0.0], theta: float=0.0) -> None:
+        self.E = E
+        self.r = r
+        self.theta = theta
+
+    def eval_xs(self, xs) -> Q_:
+        """Evaluates a cross section at the neutron's energy  using log-log interpolation
+        """
+        for idx, (energy, sigma) in enumerate(zip(xs["energy"], xs["xs"])):
+            if energy >= self.E:
+                e1 = energy
+                e2 = xs["energy"][idx + 1]
+                s1 = sigma
+                s2 = xs["xs"][idx + 1]
+                break
+        log_s1 = np.log(s1.m_as("barn"))
+        log_s2 = np.log(s2.m_as("barn"))
+        log_s_interp = ((e2.m_as("eV") - self.E.m_as("eV")) * log_s1 + (self.E.m_as("eV") - e1.m_as("eV")) * log_s2) / (e2.m_as("eV") - e1.m_as("eV"))
+        s_interp = Q_(np.exp(log_s_interp), "barn")
+        return s_interp
+
+    def mean_free_path(self, material) -> Q_:
+        """Returns the mean free path of the neutron in a material.
+        """
+        sigma_T = Q_(0, "cm**-1")
+        for iso, dens in material.atom_densities.items():
+            micro_xs = self.eval_xs(iso.get_xs("n", "total"))
+            macro_xs = micro_xs * dens
+            sigma_T += macro_xs
+        return (1 / sigma_T).to("cm")
+
+    def distance_to_next_collision(self, material) -> Q_:
+        """Randomly samples the distance to the next collision.
+        """
+        return -np.log(1 - random.random()) * self.mean_free_path(material)
+
+    def sample_nuclide_for_interaction(self, material) -> Isotope:
+        """Samples the nuclide upon which an interaction will occur in a material.
+        """
+        # Quick exit for single-isotope materials
+        if len(material.composition) == 1:
+            return next(iter(material.composition.keys()))
+        else:
+            breakpoints = list()
+            # Grab the total cross section for each constituent nuclide
+            cdf = 0
+            for iso, dens in material.atom_densities.items():
+                macro_xs = self.eval_xs(iso.get_xs("n", "total")) * dens
+                cdf += macro_xs.m_as("cm**-1")
+                breakpoints.append([iso, cdf])
+            rand = random.random()
+            for bp in breakpoints:
+                if bp[1] / cdf >= rand:
+                    return bp[0]
+
+    def sample_interaction_type(self, iso) -> str:
+        """Samples the interaction type which occurs on a specific isotope.
+        """
+        possible_interactions = ["elastic_scatter", "capture"]
+        if iso.element in ["U", "Pu"]:
+            possible_interactions.append("fission")
+        breakpoints = list()
+        cdf = 0
+        for interaction in possible_interactions:
+            xs = self.eval_xs(iso.get_xs("n", interaction)).m_as("barn")
+            cdf += xs
+            breakpoints.append([interaction, cdf])
+        rand = random.random()
+        for bp in breakpoints:
+            if bp[1] / cdf >= rand:
+                return bp[0]
+
+    def sample_next_interaction(self, material) -> Dict[str, Any]:
+        """Sample the isotope upon which the next interaction will occur, as well as what type on interaction it is
+        """
+        next_iso = self.sample_nuclide_for_interaction(material)
+        int_type = self.sample_interaction_type(next_iso)
+        data = {
+            "iso": next_iso,
+            "interaction": int_type
+        }
+        return data
+
+    def sample_scatter(self, iso: Isotope) -> Dict[str, Any]:
+        """For a scatter off of a given isotope, returns an energy and angle of scatter.
+        """
+        A = iso.mass_number
+        alpha = ((A - 1) / (A + 1)) ** 2
+        rand = random.random()
+        post_scatter_energy = self.E * (1 - (1 - alpha) * rand)
+        scatter_angle = np.arccos(
+            0.5 * ((A + 1) * np.sqrt(post_scatter_energy / self.E) - (A - 1) * np.sqrt(self.E / post_scatter_energy))
+        )
+        res = {
+            "energy": post_scatter_energy,
+            "scatter_angle": scatter_angle
+        }

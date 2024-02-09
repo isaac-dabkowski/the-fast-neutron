@@ -2,12 +2,12 @@ from manim import *
 
 CHANNEL_TITLE = "The Fast Neutron"
 CHANNEL_DESCRIPTION = "A channel all about nuclear science and engineering"
-VIDEO_TITLE = "4: Neutron scattering"
+VIDEO_TITLE = "5: Neutron scattering"
 
 TABLE_OF_CONTENTS = [
-    "Binary nuclear reactions",
-    "Kinematic thresholds",
-    "Coulombic thresholds"
+    "Neutron scattering kinematics",
+    "Outgoing energy probabilities",
+    "Lethargy"
 ]
 
 class TitleCard(Scene):
