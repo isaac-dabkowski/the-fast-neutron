@@ -1,0 +1,226 @@
+Welcome back to the fast neutron, in todays video, we are going to introduce some of
+the theory and math behind neutron scattering, one of the most important phenomena in
+all of nuclear engineering.
+
+Our last video discussed binary nuclear reactions. Some of the math that we introduced
+at the end of that video will make an appearance at the start of this one, so feel free
+to give the last video a watch. Today, we will start out by talking through the kinematics
+of neutron scattering, and the possible energies that neutrons can take on after scattering.
+From there, we will introduce a concept called neutron lethargy, which is a quantity
+unique to nuclear engineering. And finally, we will show how scattering in different
+materials causes different changes in neutron lethargy.
+
+To start things off, let's bring back our formula which described the outgoing energy of
+the light product from a binary nuclear reaction. The square root of the outgoing energy
+of the light product is equal to A plus or minus the square root of A squared plus B, where
+A and B are quantities defined in terms of the masses of the reaction participants, the
+angle at which the light product leaves the reaction relative to its incident path, and the
+reaction's Q-value.
+
+Although it may seem like binary nuclear reactions always feature a change in the makeup
+of the reaction participants, this doesn't actually have to be the case! Neutron scattering
+is an example of a binary nuclear reaction where the reaction precursors and products are
+identical to one another. We start with a neutron and a target for it to scatter off, and
+we end with the neutron and the same target. Of course, there will be energy exchanged through
+the scattering event itself, but we aren't producing any new particles or anything like that.
+
+Lets label our diagram of a prototypic binary nuclear reaction to represent a neutron scattering
+off of a nucleus. Our projectile particle is, of course, a neutron. And the target is the nucleus.
+After the scattering, the light product is the same neutron, and the heavy product is the
+same nucleus.
+
+This lets us simplify our expressions for A and B a little bit, since the projectile and the light
+product are identical, and the target and the heavy product are identical. m_n is our symbol for the
+mass of a neutron, and big M is the symbol for the mass of the nucleus.
+
+Lets plug in our new forms for A and B. We get this ugly equation, but we can do a little
+simplification to get things to lookk a bit nicer. First, we can factor out a one over M + m_n from
+the right hand side of the equation. and then from there we can square both sides to get an
+expression for E-prime, the outgoing neutron energy. Now notice that this the variables that can
+readily change in this expression for a given reaction are the angle of scattering and the reaction
+Q value, everything else is just some combination of the neutron and nucleus masses. If we define a
+new constant big A as the ratio of the nucleus mass to the neutron mass, we can get these mass-based
+coefficients to be a little simpler. A good approximation that we can make here is that this ratio
+is just the mass number of the nucleus. After all, the nucleus is made up of protons and neutrons,
+which have nearly the same mass. This approximation isn't perfect, of course, since nuclear binding
+factors into the mass of the nucleus through the mass defect and protons and neutrons don't have
+*exactly* the same mass, but its close to being true. If we convert all of our mass values to be
+in terms of the mass of a neutron, m_n goes to 1, and big M goes to A.
+
+Now we have a formula which is a little easier to digest. It relates the energy of the neutron after
+scattering to its initial energy, the angle at which it scatters, and the mass number of the
+nucleus it scatters off of. Let's look at how changing the mass of the target and the angle of
+scattering affects the outgoing neutron energy.
+
+When I was studying neutron scattering in school, one thing that really helped me understand the
+kinematics of this problem was my professor plotting the angle of scattering as a function of the
+outgoing neutron energy, so let's do that. If we rearrange our formula to solve for the cosine of
+the scattering angle, we get the following expression.
+
+First, lets plot our curve for the case of a neutron scattering off of a proton. At the top right of
+the curve, we see that the cosine of the scattering angle is 1, which means the scattering angle is
+zero. Here, the post scatter energy of the neutron E-prime is equal to its incident energy, so the
+neutron didnt lose any energy. This represent a scattering event where the neutron just barely
+interacts with the proton, and continues on its way in the same direction that it came from. As the
+scattering angle grows larger an the cosine decreases, we see that the neutron transfers more and
+more energy to the proton. Finally, there is the case where E-prime is equal to zero. This
+corresponds to a scattering event where the neutron transfers all of its energy to the proton and
+stops dead in its tracks.
+
+This is only possible if the neutron is scattering off of something that has the same mass as it
+does, so a proton or another neutron. If the target that the neutron hits is heavier than it is,
+this cannot occur, the neutron cannot physically transfer all of its energy through a scatter to the
+target. If this seems weird, a good analogy is to think about billiard balls. If you are playing
+pool and you hit the cue ball perfectly at another ball, the cue ball will stop in its tracks and
+the other ball will go rolling away. However, if you decided to hit a cue ball at a bowling ball
+sitting on the table in the exact same manner, the cue ball would transfer some of its energy to the
+bowling ball, but it would bounce right back at you. Another interesting thing to note here is that
+the cosine of the scattering angle cannot be negative, which means that the neutron cannot
+backscatter off of a proton under any circumstance.
+
+Lets plot this curve again, this time for a heavier target. Let's bump A from 1 - the value
+corresponding to a proton - to 2. Here we can see that it is still possible for the neutron to lose
+zero energy and continue on its original path, but it is not possible for it to lose all of its
+energy. The lowest possible energy the neutron can leave with comes when the cosine of the
+scattering angle is negative 1, which means the neutron bounces back in the opposite direction from
+which it came.
+
+We will derive an expression for this lowest possible energy in just a second, but for now let's
+just say it is equal to some factor alpha time the incident energy. If we keep increasing the mass
+of the target, alpha E gets closer and closer to our incident energy, meaning that the neutron is
+able to transfer less and less energy through a scattering event. If the mass of the target was
+infinite, this curve becomes a straight line up and down at E. This is analogous to the neutron
+scattering off of an immovable point, no matter what angle it bounces away with, it will transfer
+no energy at all.
+
+Now lets quickly calculate what that minimum post scatter energy for a neutron is. We will assume
+that our scatter is elastic, so the Q value is zero. For any A value greater than 1, this will occur
+when a neutron perfectly backscatters, so the scattering angle is 180 degrees and the cosine of the 
+scattering angle is negative 1. Plugging this value in and doing a little simplification gives a
+value of A minus 1 over A plus 1 all squared, times the original incident energy. This is our alpha
+term, and as A grows larger, it approaches 1.
+
+So now we know how to calculate the final neutron energy for a given scatter, but what is the
+probability that the neutron will have any one energy versus another? That is to say, what is the
+probability density function which describes post-scatter energies? It's about as simple as it gets,
+it is a uniform distribution. For an incident energy E, all post-scatter energies between E and
+alpha E are equally likely, so the probability density funtion which describes the probability per
+energy that a neutron scatters from energy E to E' (assuming the Q value is zero) can be written as
+follows.
+
+With this probablity density function we can calculate the average loss of energy for a neutron
+during a scattering event. This is just equal to the initial energy minus the average post-scatter
+energy. And since we have a probability density function describing post scatter energies, we can
+calculate its mean value by simply integrating E times the function over the functions whole domain.
+
+So we do a little algebra, and we end up with the result that the average loss in energy is 1/2
+times the quantity (1 - alpha) times E, which is right in the middle of our uniform distribution as
+expected.
+
+OK, now that we have a good understanding of the basic math behind neutron elastic scattering, I
+want to point out that a lot of our formulas are all dependent on incident energy. This makes sense,
+as the amount of energy exchanged by scattering events is undoubtably a function of incident energy,
+but there is a quantity that nuclear engineers use to describe how neutrons gain and lose energy
+which can make some of the math to come a little bit easier.
+
+This quantity is called "lethargy", and we represent it with the letter u. Lethargy is defined as
+the matural logarithm of the ratio of some reference energy E_0 and our energy E. E_0 is typically
+selected to be the maximum neutron energy that we expect to see in our system. Notice that lethargy
+is dimensionless and that it actually increases in magnitude with lower energies. Here is a plot of
+lethargy as a function of energy for some E_0.
+
+This may seem like a pretty random quantity to introduce, but what is nice about lethargy is that
+it sort of eliminates a lot of the pesky dependence on incident energy from the formulas that we
+described previously, and makes it so that you can sort of treat every scattering event as being
+equivalent. To show this, lets take a look at how changes in energy correspond to changes in
+lethargy.
+
+With a little algebra, we can show that going from E to E' results in a change in lethargy equal to
+the natural log of E over E'. Recall that our minimum change in energy is when E' is equal to E.
+This results in no change in lethargy. Our maximum change in energy happens when we backscatter and
+go from E to alpha E. And in terms of a change lethargy, this is when lethargy increases by the
+natural log of 1 over alpha. So our energy dependence has been removed! It doesn't matter if our
+neutron has 10 MeV of energy or a fraction of an eV, it's maximum change in lethargy for a scatter
+is the same.
+
+Now just like we did before for energy, lets calculate the average change in lethargy for a
+scattering event. We start by constructing or probability density function for lethargy as follows.
+Every differential slice of our lethargy function should match that of the energy function, so we
+write the following equality. And then we can calculate dE'/du' trivially since we already have
+defined the function which relates energy and lethargy. Then we just plug in our energy probability
+density function from earlier and we get our result.
+
+To calculate our mean change in lethargy, we follow the same procedure as before and integrate our
+lethargy pdf times u'. This can be made a little easier if we define a helper variable x as the
+change in lethargy. The symbol we normally use to represent the mean change in lethargy is xi, which
+is unfortunate because it is impossible to write accurately in your notes. I'll spare you a full
+description of the math, but with a little help from integration by parts, we can get an answer.
+
+The mean change in lethargy for a scattering interaction is 1 + alpha times the natural log of alpha
+over 1 minus alpha. So if A is 1, xi is 1 and if A is larger than 1 xi is smaller than 1. Notice
+that this value is completely independent of the inital lethargy, its just a function of the mass
+number of the target.
+
+In a very real sense, the value of xi for some material describes how effective that material is at
+slowing down neutrons. The closer xi is to 1, the better the material is at quickly pulling energy
+out of neutrons through scattering. Because there is no initial dependence on lethargy, we can
+calculate the mean change in lethargy for N collisions by simply multiplying xi by N. This
+calculation would be much more involved if we tried to calculate the mean change in energy after
+N collisions without the help of lethargy.
+
+We can sort of flip this around and find how many scatters we expect it will take for a neutron to
+go from one energy to another with the formula N equals 1 over xi times the change in lethargy, or
+1 over xi times the natural log of our initial energy divided by the final energy.
+
+To wrap things up, I want to show a quick simulation which proves this out. We will do a little
+Monte Carlo simulation here. We will simulate a number of neutrons which all start at 2 MeV, and we
+will see how many scatters on average it will take for them to scatter down to 1 eV.
+
+Our first example will be for A = 1. This is analogous to neutrons scattering off of protons or
+hydrogen-1. For each simulation, we start with a neutron at 2 MeV, and then we will randomly sample
+a new energy from the probability distribution function we saw earlier. We will then repeat this
+process and record the number of scatters it takes to get our energy below 1 eV.
+
+Here is a quick example of how that will looks in terms of the neutron's energy.
+
+[EXPLAIN PLOT, ITS RANDOM AFTER ALL]
+
+Now that was just a couple of cases, instead lets simulate a few thousand and see how many things
+shake out. For A = 1, our alpha value is equal to zero and our average change in lethargy is defined
+to be 1. So we start to perform our simulations, and we see that the average value for the number
+of scatters it took to reach 1 eV was [VALUE]. If we analytically calculate the expected value with
+our formula form earlier, it comes out to around 14.5. Some neutrons took only a couple of scatters
+to reach 1 eV, and some took closer to 30, but on average, a neutron scattering in the best possible 
+medium for slowing it down takes only around 14 scatters to reduce its energy by a factor of two
+million.
+
+Now lets up our A value to 2, so the medium our neutron is scattering in is composed of particles
+twice the mass of the neutron itself. This could be something like deuterium in heavy water, which
+is used to slow down neutrons in canadian reactors. Here, our alpha value is 0.11, and our average
+change in lethargy per scatter is 0.73. This is less than the previous value of one, which shows
+that this material will be worse at slowing down neutrons. After a bunch of simulations we see that
+it takes on average [VALUE] scatters to get to 1 eV from 2 MeV, lining up with the prediction.
+
+Finally, lets up A to 12, this could be something like carbon, which is used to slow down neutrons
+in most gas-cooled reactors. Here, our alpha value rises to 0.72 and our average change in lethargy
+per scatter drops to 0.16. Our simulation predicts that it takes [VALUE] scatters to reach 1 eV.
+
+The simulations prove out that heavier materials are worse at slowing down neutrons. If you plot the
+expected number of collisions needed to go from 2 MeV to 1eV as a function of big A, you can see
+there is a more or less linear relationship, but the number of scatters increases pretty quickly.
+
+For iron 54, the expected number of collisions rises to 411, and for our old friend uranium 238,
+it takes on average a whopping 1731 collisions. 
+
+For reasons we will get into in future videos, this trend has profound implications on how we pick
+materials for use in different types of nuclear reactors, and the materials we pick directly impact
+things like how efficient reactors are at utilizing neutrons, how long we can leave components in
+our reactor cores before they need to be replaced, and whether or not we can construct reactors to do 
+crazy things like produce their own fuel or take nuclear waste from other reactors and use it as
+fuel. For now, I hope this video has given you a good introduction to neutron scattering and how
+it impacts neutron energies.
+
+Thanks for watching! In the next video, we are going to do a deep dive on nuclear reaction cross
+sections. This will be the final stepping stone before we are ready to start introducing the basic
+concepts of reactor theory. See you in the next video!
+
