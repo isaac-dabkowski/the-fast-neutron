@@ -1,0 +1,78 @@
+Welcome back to the fast neutron, in todays video, we are going to introduce the concept of cross
+sections, which will help us understand how we quantify the ways in which particles interact with
+matter. We will start off by introducing cross sections at a conceptual level, and then use them to
+build a framework for modeling radiation attenuation. From there, we will introduce quantities like
+flux and fluence, and we will wrap things up with some cool plots of cross sections varying with
+particle energy - which will be crucial to understand before we get into reactor theory.
+
+Our last video discussed neutron scattering, and we talked through some of the formulas which govern
+how neutrons transfer energy when they collide with nuclei. Besides scattering, there are quite a
+few other interactions that neutrons and other particles can undergo, so a natural next step is to
+think through radiation interactions with matter at a higher level. All of the calculations that we
+did in the last video assumed up front that a scattering event had taken place, but we know for a
+fact that neutrons and other forms of radiation can penetrate all kinds of materials - so particles
+aren't gaurenteed to interact with nuclei in their vicinity.
+
+Let's begin our dicussion by thinking through how we can characterize the likelihood with which an
+interaction will occur. The quantity which describes this is called a cross section. Here's a little
+thought experiment to get things started.
+
+Imagine we have a beam of neutrons firing from left to right. Unencumbered, these neutrons will fly
+off to infinity. Now lets put an obstacle in their way - in this case it is a sheet of material only
+one atom thick, and these atoms are gaurenteed to absorb any neutrons that collide with them. How
+can we go about determining the probability that a neutron from our beam is absorbed the sheet?
+
+An intuitive way to go about this would be to take a look at the sheet head-on. Notice that the
+nuclei of the atoms take up a good chunk of the sheet's area, but there are still some gaps left
+over. If we imagine our neutron beam is firing neutrons at the sheet with random positions, it
+stands to reason that the probability of a neutron being absorbed is equal to the fraction of the
+sheet's area taken up by the nuclei.
+
+Let's come up with a formula for this. We will represent the area of the sheet with A, and the area
+of a single nuclide with little sigma. The probability of our neutron being absorbed is therefore
+just the number of nuclei times little sigma divided by the area of the sheet!
+
+To formalize how we can calculate the number of nuclei in the sheet, we can write it as the density
+of atoms within the sheet (which we will write as big N with units of atoms per volume) times the
+sheet's volume, which will be A times the thickness of the sheet "Delta x". Cancelling out A shows
+us that the probability of absorption is equal to the atom density of the sheet material, times the
+area of an individual atom in the sheet, times the thickness of the sheet. This makes sense, as we
+would expect the probability of absorption to go up if the sheet was made of a more dense material,
+if the atoms were larger, or if the sheet itself was thicker.
+
+Little sigma (the area of an individual atom) is what is called the "microscopic cross section" of
+our sheet's material. "Cross section" here really is an intuitive name, since we definied this
+quantity as the cross-sectional area of an atom when we look at it head-on. Because we are talking
+about individual atoms here, conventional units like a square centimeter would be pretty clunky - so
+instead we typically use units of "barns", where one barn is equal to 10^-24 cm^2. This tiny unit of
+area is a lot more convienent to use for an individual atom. The name "barn" actually comes from the
+Manhattan project, where physicists opinied that Uranium was "as big as a barn" from the perspective
+of neutrons.
+
+When we multiply a material's atom density by its microscopic cross section, we get a quantity
+called the macroscopic cross section which we represent with big sigma. This has units of inverse
+length, and it is equal to the probability of interaction per unit length of material. If you take
+the macroscopic cross section of a slab and multiply it by the slab's thickness, you get the
+probability of an interaction taking place in the slab for a given particle - that's just our
+formula from earlier!
+
+Before we move on, I want to quickly mention that the values of microscopic cross sections depend on
+a whole host of factors. It probably comes as pretty obvious that we will have different microscopic
+cross section values for different materials (they can be made up of all sorts of different isotopes
+after all), but cross section magnitudes also depend on the type of incident particle. Some
+materials really like to interact with neutrons but are fairly transparent to photons and vice
+versa, so that plays into things. And then the energy of the incident particle also is massively
+important in determining the likelihood of interaction, along with the temperature of the material,
+and the type of interaction we are interested in, and whether the material exists as a free gas or
+if it is bound in a lattice and so on and so forth. So there is a lot that goes into driving the
+value of little sigma. We will talk about this in more detail in just a bit, but I just wanted to
+mention that up front.
+
+Now that we have the concept of cross sections in our toolbelt, we can get on with deriving a more
+general framework for radiation attenuation that will allow us to think about phenomena more
+complicated that a monodirectional beam of neutrons on a one-atom-thick sheet. For instance, if we
+can quantify how a stream of neutrons is absorbed by a slab of material as a function of the slab's
+thickness, that would allow us to start thinking through engineering problems like designing
+radiation shields.
+
+
