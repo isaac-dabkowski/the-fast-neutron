@@ -5,11 +5,19 @@ import subprocess
 import argparse
 
 from _2024.cross_sections.video_intro import TitleCard, TableOfContents
+from _2024.cross_sections.cross_sections import XSTitleCard, XSIntro, XSDef, BeamIntensity, GeometricAttenuation, HydrogenXS, UraniumXS
 
-OUTPUT_DIRECTORY = r"C:\Users\isaac\Documents\TheFastNeutron\videos\5_neutron_scattering\scenes"
+OUTPUT_DIRECTORY = r"C:\Users\isaac\Documents\TheFastNeutron\videos\6_cross_sections\scenes"
 SCENES_IN_ORDER = [
-    # ("video_intro", "TitleCard"),
-    # ("video_intro", "TableOfContents"),
+    ("video_intro", "TitleCard"),
+    ("video_intro", "TableOfContents"),
+    ("cross_sections", "XSTitleCard"),
+    ("cross_sections", "XSIntro"),
+    ("cross_sections", "XSDef"),
+    ("cross_sections", "BeamIntensity"),
+    ("cross_sections", "GeometricAttenuation"),
+    ("cross_sections", "HydrogenXS"),
+    ("cross_sections", "UraniumXS")
 ]
 
 # Argparse to allow for variable quality of render

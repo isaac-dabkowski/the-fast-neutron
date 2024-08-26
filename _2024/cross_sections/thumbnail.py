@@ -4,15 +4,17 @@ from manim import *
 class Thumbnail(Scene):
     def construct(self):
         # Title
-        title = Tex(r"\underline{Neutron scattering}", font_size=70).to_edge(UP).shift(DOWN * 0.25)
+        title = Tex(r"\underline{Cross sections}", font_size=70).to_edge(UP).shift(DOWN * 0.25)
         # Friendly neutron
-        neutron_sprite = ImageMobject("assets/NeutronSprite.png").scale(0.7).to_edge(LEFT).shift(UP + RIGHT)
-        i1 = ImageMobject("assets/scatter_angle.png").scale(0.5).next_to(neutron_sprite, DOWN).shift(DOWN*0.5).rotate(10 * DEGREES)
-        i2 = ImageMobject("assets/leth.png").scale(1.5).to_edge(DOWN).shift(RIGHT * 1.0)
-        i3 = ImageMobject("assets/scatter_sim.png").scale(0.8).next_to(i2, UP).shift(RIGHT * 1.5).rotate(-5 * DEGREES)
-
+        images = [
+            ImageMobject("assets/NeutronSprite.png").scale(0.7).to_edge(LEFT).shift(UP + RIGHT),
+            ImageMobject("assets/beam.png").scale(0.5).to_edge(LEFT).shift(DOWN * 2.5),
+            ImageMobject("assets/geom.png").scale(0.9).to_edge(DOWN).shift(RIGHT * 1.0),
+            ImageMobject("assets/uplot.png").scale(0.65).next_to(title, DOWN).to_edge(RIGHT),
+            ImageMobject("assets/uplot.png").scale(0.65).next_to(title, DOWN).to_edge(RIGHT),
+            ImageMobject("assets/form.png").scale(1.5).next_to(title, DOWN).shift(LEFT + DOWN * 0.5).rotate(7 * DEGREES),
+            ImageMobject("assets/form2.png").scale(1.1).to_corner(DR).shift(UP * 0.5).rotate(-7 * DEGREES)
+        ]
+        for img in images:
+            self.add(img)
         self.add(title)
-        self.add(neutron_sprite)
-        self.add(i1)
-        self.add(i2)
-        self.add(i3)

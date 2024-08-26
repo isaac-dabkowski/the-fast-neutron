@@ -1,17 +1,20 @@
 Welcome back to the fast neutron, in todays video, we are going to introduce the concept of cross
 sections, which will help us understand how we quantify the ways in which particles interact with
-matter. We will start off by introducing cross sections at a conceptual level, and then use them to
-build a framework for modeling radiation attenuation. From there, we will introduce quantities like
-flux and fluence, and we will wrap things up with some cool plots of cross sections varying with
-particle energy - which will be crucial to understand before we get into reactor theory.
+matter.
 
 Our last video discussed neutron scattering, and we talked through some of the formulas which govern
 how neutrons transfer energy when they collide with nuclei. Besides scattering, there are quite a
 few other interactions that neutrons and other particles can undergo, so a natural next step is to
-think through radiation interactions with matter at a higher level. All of the calculations that we
-did in the last video assumed up front that a scattering event had taken place, but we know for a
-fact that neutrons and other forms of radiation can penetrate all kinds of materials - so particles
-aren't gaurenteed to interact with nuclei in their vicinity.
+think through radiation interactions with matter at a higher level.
+
+We will start off by introducing cross sections at a conceptual level, and then use them to
+build a framework for modeling radiation attenuation. From there, we will introduce quantities like
+flux and fluence, and we will wrap things up with some cool plots of cross sections varying with
+particle energy - which will be crucial to understand before we get into reactor theory.
+
+All of the calculations that wedid in the last video assumed up front that a scattering event had
+taken place, but we know for afact that neutrons and other forms of radiation can penetrate all
+kinds of materials - so particles aren't gaurenteed to interact with nuclei in their vicinity.
 
 Let's begin our dicussion by thinking through how we can characterize the likelihood with which an
 interaction will occur. The quantity which describes this is called a cross section. Here's a little
@@ -49,16 +52,30 @@ area is a lot more convienent to use for an individual atom. The name "barn" act
 Manhattan project, where physicists opinied that Uranium was "as big as a barn" from the perspective
 of neutrons.
 
+Now I should really point out that the microscopic cross section is a bit of an abstraction. It is
+less the true area of a particle or atom, and more an "effective area". Most atomic nuclei have
+radii of around 10^-15 meters, so we would expect for most cross sections to be on the order of
+one barn or less. However when we measure cross sections, we often see values much larger or
+smaller than one barn. Since we are down at the atomic or subatomic scale, we are working with
+objects best described by quantum mechanics. These aren't hard-bodied entities colliding like
+billiard balls, they have wavelike properties and there are energy levels to contend with - so
+things are a little more complicated than that. The microscopic cross section is instead just the
+area which produces behavior that matches what we would expect to see if our projectiles were
+pointlike particles flying at a sheet of material like in the previous example.
+
 When we multiply a material's atom density by its microscopic cross section, we get a quantity
 called the macroscopic cross section which we represent with big sigma. This has units of inverse
 length, and it is equal to the probability of interaction per unit length of material. If you take
 the macroscopic cross section of a slab and multiply it by the slab's thickness, you get the
 probability of an interaction taking place in the slab for a given particle - that's just our
-formula from earlier!
+formula from earlier! While the microscopic cross section is a property associated with a material
+itself, the macroscopic cross section is dependent on the material's density. If you divide 1 by the
+macroscopic cross section, you get the average distance a particle will need to travel in a material
+before an interaction occurs - this is called the "mean free path".
 
 Before we move on, I want to quickly mention that the values of microscopic cross sections depend on
 a whole host of factors. It probably comes as pretty obvious that we will have different microscopic
-cross section values for different materials (they can be made up of all sorts of different isotopes
+cross section values for different materials (they can be made up of all sorts of different isotopesp
 after all), but cross section magnitudes also depend on the type of incident particle. Some
 materials really like to interact with neutrons but are fairly transparent to photons and vice
 versa, so that plays into things. And then the energy of the incident particle also is massively
@@ -75,4 +92,127 @@ can quantify how a stream of neutrons is absorbed by a slab of material as a fun
 thickness, that would allow us to start thinking through engineering problems like designing
 radiation shields.
 
+Let's start our discussion of radiation attentuation by thinking about how the intensity of a beam
+of radiation will change as it passes through material. Here, intensity is a quantity which
+describes the strength of our beam as a function of the position we find ourselves in within a slab.
 
+Whenever an interaction occurs in our slab, we would expect the intensity of the beam to decrease,
+and we can write a differential equation to describe this as follows. The change in intensity over
+a differential slice of our slab dI/dx will be equal to negative Sigma times the beam intensity at
+that point. Remember that Sigma is the probability per length of an interaction occuring, so if we
+integrate this expression from 0 to x, we will get an expression for the intensity of the beam which
+has not undergone any interactions up to x. This comes out to I(x)=I(0)*e^{-Sigma x}, where I(0)
+is the initial intensity of the beam at the surface of the slab.
+
+So while the probabilty that we have an interaction here is constant from point to point, the amount
+of beam which penetrates the slab up to some point x falls off exponentially. If our slab's material
+changes with position so that Sigma is dependent on x, we can generalize our formula as follows.
+
+Here is an example of how this would play out for a 2 cm thick slab from with a macroscopic cross
+section of 1 inverse centimeter. The intensity of the beam prior to the slab is constant, since it
+isn't interacting with anything. Then once it hits the slab we see the intensity fall exponentially.
+Once the beam exists the slab, the intensity once again remains constant.
+
+For something a little more complicated, let's take a look at a two-part slab, where the first
+section from x=1 to x=2 has a macroscopic cross section of 0.3 inverse centimeters, and the second
+section from x=2 to x=3 has a macroscopic cross section of 1.0 inverse centimeters. In the first
+section, the beam attenuates away slowly since the probability of interaction per length is lower,
+and then once we hit the second section we attenuate away more quickly. I'm sure you can see now
+how this concept would be useful if we were trying to design a radiation shield. Depending on how
+much we wanted to attenuate a beam away and how thick we wanted our shield to be, we could pick
+materials with suitable macroscopic cross sections to accomplish our goal.
+
+Before we move onto looking at how neutron cross sections vary with energy, I have a quick aside
+I want to make. There is that there is actually more than one way in which radiation
+may be attentuated. What we are showing here is called "material attenuation", which is the
+reduction in radiation intensity when radiation interacts with an obstacle in its path. A second
+type of attenuation is "geometric attenuation".
+
+Instead of a monodirectional beam, imagine we had a isotropic point source of radiation. "Isotropic"
+just means it is emitting particles in all directions with equal probability. You can imagine that
+as we move further from the point source, the paths that the particles trace out will become more
+and more spread out in space. Now the intensity quantity we were using earlier is a little
+simplistic for this example, so lets introduce a new quantity called "flux". Flux is just a measure
+of how many particles are passing through a location every second on a per area basis, and we
+represent it with the greek letter "fee". More accurately, flux is the "path length density" with
+units of per area, per time.
+
+At a distance R away from the source, the flux will therefore be the rate at which particles are
+being emitted "Q" divided by the area of a sphere with radius R. This area grows as R increases, so
+flux drops off proprtional to 1 over 4 pi R squared. This reduction in flux as particle paths spread
+out in space is "geometric attenuation".
+
+If our point source was placed inside a sphere of material, all we would need to do to update our
+phi formula is to add in the term from earlier which describes the material attenuation that would
+occur, e^-Sigma R.
+
+By the way, if you integrate flux over some duration - you will get the total number of particles
+passing by per area per area over that time period. This quantity is called "fluence". And then if you
+integrate fluence over some surface, you will get the total number of particles which hit that area during
+that time period. The radiation exposure sustained by a target is a function of this quantity. This
+is why in radiation safety, we consider the time someone spends by a source, the distance they are
+from the source, and the shielding between them and the source. If you want to limit your exposure
+to radiation, you can spend less time near a source, get further away from it, or place some shielding
+between you and the source.
+
+Alright, now we have an understanding of cross sections and how they apply to radiation attentuation,
+so to close things out lets take a look at some actual cross section values!
+
+We will start by looking at a neutron cross section for hydrogen-1, the simplest of isotopes. Earlier,
+I mentioned that the value of a cross section varies depending on the specific interaction we are
+talking about. Let's look at the cross section for scattering off of hydrogen-1. 
+
+This plot doesn't really tell us all that much, its clear that at low energies the cross section is
+pretty high, but for even just a single eV it seems like the cross section is basically zero, so lets
+transform the x axis to a logarithmic scale.
+
+I'm going to highlight a region in the plot which shows the cross sections when energies get down to
+fractions of an eV. Neutrons with these energies are called "thermal neutrons", since they have such
+low energies that they are in thermal equilibrium with the material around them. Notice that the
+curve for the cross section looks like the left half of a parabola. In this region of the plot, the
+cross section is proportional to one over the velocity of the neutron. This behavior is common in
+many cross section profiles.
+
+Lets transform the y axis to be logrithmic as well. Now our 1/v relationship looks like a straight
+line, and we can see a little more complicated behavior. The likeihood of a scattering event
+hapenning levels off until high energies in excess of 10,000 eV, at which point it starts to tail
+off again.
+
+Now lets look at something a little more interesting. Lets plot the fission cross section of the most 
+common isotope of Uranium, uranium-238. Right off the bat, things are looking a little more complicated
+here. At thermal energies we can still see the 1/v region that we saw with Hydrogen, but then once
+we get to these intermediate energies (which are sometimes called "epithermal" energies), things
+kind of go crazy. We have these steep peaks and valleys, where specific energies of neutrons are
+tens of thousands of times more likely to cause fission than neutrons with just slightly different
+energies.
+
+These peaks here are called "resonances". And the reason they are there is rooted in quantum physics.
+It is pretty well known that electrons exist in discrete energy levels, and the same is true for
+nuclei. In fact, there is a whole model, the nuclear shell model, which predicts these energy levels.
+Interactions are most likely to occur when an incoming neutron has just enough energy to cause the
+product nucleus to hop up to one of those energy levels. When this is the case, we see a huge spike
+in the cross section.
+
+As we go up even higher in terms of energy, we get fast neutrons, which are indeed the namesake of
+this channel! When neutrons are emitted from splitting atoms, they are up at these energies.
+
+Finally, lets look at another isotope of uranium in order to see how cross sections can vary for
+a single element based upon the number of neutrons it has. This is the fission cross section for U-235.
+As we can see for thermal and epithermal energies, U235 is thousands to millions of times more likely
+to undergo fission compated to U238 - which makes it really good fuel for reactors.
+
+If you dig uranium up out of the ground, only around 0.7% of it will be U235, while the remainder
+will be almost entirely U238. In order to improve the quality of the uranium we put into reactors,
+uranium is typically "enriched", a process where the fraction of U235 is increased. We can also see
+that for uranium 235, slow neutrons are way better at causing fission than fast neutrons. For this
+reason, many reactors intentionally slow neutrons down to thermal energies so that they are more
+likely to split an atom. U238 is actually more likely to be split by a fast neutron.
+
+We wil talk more about all of this in a later video, but if you hear about "thermal spectrum" reactors
+versus "fast" reactors - that is referring to the type of neutrons relied upon in those reactors
+to perform the bulk of atom splitting. Depending on the energy of neutrons in a reactor, fission and
+capture and absorption cross sections can significantly vary, and this leads to some pretty profound
+differences in how reactors behave.
+
+Thanks for watching! Now that we understand cross sections, we are finally ready to start introducing
+reactor theory in the next video. Hope to see you there!
