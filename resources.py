@@ -398,6 +398,7 @@ class Isotope():
         with open(os.path.join(self.get_xs.__globals__["__file__"], "..", "cross_sections.json")) as json_file:
             xs_data = json.load(json_file)
         cached_xs = xs_data.get(self.element, {}).get(str(self.mass_number), {}).get(cross_section, {})
+
         # If we have it cached, just use it instead
         if cached_xs != {}:
             xs = {
@@ -500,6 +501,7 @@ class Isotope():
             EC.presence_of_element_located(
                 (By.XPATH, "/html/body/div[2]/div[2]/table/tbody"))
         )
+
         # Get the row with the cross sections
         for row in table.find_elements(By.XPATH, ".//tr"):
             for col in row.find_elements(By.XPATH, ".//td"):
@@ -531,6 +533,7 @@ class Isotope():
 
         # Grab the cross section table
         xs_table = driver.find_element(By.XPATH, "/html/body/div[2]/div[1]/div/div[2]/div/table/tbody")
+
         # Check if there are multiple pages
         first_row = xs_table.find_elements(By.XPATH, ".//tr")[0]
         if "Next" in first_row.text:

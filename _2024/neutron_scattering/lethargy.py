@@ -276,7 +276,7 @@ class ScatterSim(Scene):
                 )
                 bars.add(bar)
             return bars
-        
+
         ##THE UPDATER FUNCTION##
         def update(dummy, num_per_frame):
             for i in range(num_per_frame):

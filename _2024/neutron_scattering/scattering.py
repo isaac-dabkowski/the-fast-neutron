@@ -206,7 +206,7 @@ class AngleFormula(Scene):
             FadeIn(ax_y_label)
         )
         self.wait()
-        
+
         A_label = VGroup(
             Tex(r"$A=$"),
             DecimalNumber(
