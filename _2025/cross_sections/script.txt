@@ -1,0 +1,50 @@
+Welcome back to Tthe fast neutron! In today’s video, we’re finally ready to dive into the basics of
+reactor theory. The understanding we have been building up on the foundations of nuclear physics is
+about to start paying off as we move towards learning about some of the machines that we build to
+harness the power of the atom. So if you have been following along with the past videos on this channel,
+thanks! Over the next few videos, we will be bringing in plently of the concepts we have already covered
+to understand the theory behind nuclear reactors.
+
+Today, we are going to cover the absolute basics. Namely, we are going to walk through the concept
+of a neutron multiplication factor, which is a quantity that we use to describe how a nuclear chain
+reaction is proceeding. Then we will talk about the neutron lifecycle within reactors, which will
+provide us with a really intuitive path forward for deriving a formula for the neutron multiplication
+factor. Finally, we will tie each term in our formula to physical quantities associated with the
+material and geometric makeup of nuclear reactors. 
+
+To start off, I think it is worth remembering what nuclear reactor are actually supposed to do. Like
+we have talked about a few times in previous videos, splitting some kinds of atoms results in the 
+release of energy, which can then be used to do useful things like generate electricity. Now the
+best way to split an atom is with a neuton, and some atoms release neutrons when they are split! These
+two facts lead us to the obvious conclusion that if we collect a lot of these atoms in a location and
+hit one with a neutron, it can split, which releases more neutrons, which can go on to split more
+atoms, and we have a chain reaction!
+
+Let's start with a little toy example. Lets say we have a special isotope which releases two
+neutrons upon undergoing fission. If we split an atom of our isotope, this can lead to two more
+fissions. And each of those fission can lead to two more fissions! And so on an so forth. Before we
+know it, we have sixteen neutrons when we only started with one! This is an example of a chain
+reaction which is increasing our neutron population over time.
+
+This is not the only way that our chain reaction could possibly proceed, though. Imagine if instead
+our isotope only produced one neutron when it split. Now our initial neutron causes fission, which
+produces one neutron leading to one more fission, which produces one more neutron leading to one
+more fission, and so on. Here, we still have a chain reaction, but our neutron population is remainig
+constant over time.
+
+Finally, imagine a case where our isotope only had a 50/50 chance of emitting a neutron if it split.
+Here, lets start with eight neutrons splitting eight atoms. Although we split eight atoms, we only
+emitted four neutrons, so the next generation of fission reactions only sees four atoms split. This
+then results in two neutrons, which causes two subsequent fissions. So we started with eight neutrons,
+but now we are down to just a single neutron. This is still a chain reaction, but its one which
+reduces our neutron population over time.
+
+Nuclear engineers have a quantity which we use to describe these sorts of chain reactions which
+quickly tells us whether or not our reactor is currently increasing, decreasing, or maintaining its
+neutron population. This quantity is called the neutron multiplication factor, and we typically
+represent it with the letter k.
+
+The formula for k can be simply written as a fraction. In the numerator of our fraction we have the
+number of neutrons in our system from a generation of fissions. And in the demoninator we have the
+number of neutrons in the prior neutron generation which caused the fissions that created our
+current generation of neutrons!
